@@ -301,10 +301,16 @@
         color: #1a3f8a;
     }
     .internship-card .card-header p {
-        font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
-        font-weight: 400;
-        color: #666;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f47920;
+  text-shadow: 0 2px 8px rgba(244,121,32,0.12);
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #fff7d6 0%, #fff0b3 100%);
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin-left: 10px;
     }
 
     .internship-card .card-body p {
@@ -533,24 +539,51 @@
     {% if recommendations %}
       {% for internship in recommendations %}
       <div class="internship-card">
-        <div class="card-header">
+  <div class="card-header" style="overflow: visible;">
           <h3>{{ internship.role }}</h3>
           <p>{{ internship.company }}</p>
         </div>
         <div class="card-body">
-          <p>Similarity Score: {{ (internship.similarity_score * 100)|round(1) }}% match</p>
-          <ul>
-            <li><i class="fas fa-map-marker-alt"></i> {{ internship.location }}</li>
-            {% if internship.duration %}
-            <li><i class="fas fa-clock"></i> Duration: {{ internship.duration }} months</li>
+          <div style="display: flex; align-items: center; gap: 10px; overflow: visible;">
+            <span style="font-weight: 600;">Match: {{ (internship.similarity_score * 100)|round(1) }}%</span>
+            {% set loc = internship.location | string | replace('[','') | replace(']','') | replace("'",'') | replace(',',' ') | replace('(','') %}
+            {% set loc_list = loc.split() %}
+            {% set loc_unique = loc_list | unique %}
+            {% set loc_display = (loc_unique | select('string') | reject('equalto','') | list) %}
+            <span style="font-size: 1rem; color: #444;"><i class="fas fa-map-marker-alt"></i> {{ loc_display[0] if loc_display else 'Unknown' }}</span>
+            {% if internship.stipend_amount %}
+            <span style="font-size: 1rem; color: #444;"><i class="fas fa-rupee-sign"></i> ₹{{ internship.stipend_amount|int }}</span>
             {% endif %}
-            {% if internship.stipend %}
-            <li><i class="fas fa-rupee-sign"></i> Stipend: {{ internship.stipend }}</li>
-            {% endif %}
-            {% if internship.skills and internship.skills|length > 0 %}
-            <li><i class="fas fa-code"></i> Skills: {{ internship.skills|join(', ') }}</li>
-            {% endif %}
-          </ul>
+            <span class="info-icon" style="margin-left: 10px; cursor: pointer; position: relative; z-index: 1000;"
+                  onmouseover="showInfoTooltip(this)"
+                  onmouseout="scheduleHideInfoTooltip()">
+              <i class="fas fa-info-circle" style="color: #1a3f8a; font-size: 1.2rem;"></i>
+              <template class="info-tooltip-template">
+                <div class="info-tooltip" style="display: block; position: fixed; left: 0; top: 0; background: #fff; color: #222; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 18px 22px; min-width: 260px; z-index: 99999; white-space: normal; overflow: visible;">
+                  <strong>{{ internship.role }}</strong><br>
+                  <span style="font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 700; color: #f47920; background: linear-gradient(90deg, #fff7d6 0%, #fff0b3 100%); padding: 2px 8px; border-radius: 6px; margin: 2px 0; display: inline-block;">{{ internship.company }}</span><br>
+                  {% if internship.intern_type %}
+                    <b>Type:</b> {{ internship.intern_type | string | replace('[','') | replace(']','') | replace("'",'') | replace(',',' ') }}<br>
+                  {% endif %}
+                  {% if internship.duration %}
+                    <b>Duration:</b> {{ internship.duration }} months<br>
+                  {% endif %}
+                  {% if internship.skills and internship.skills|length > 0 %}
+                    <b>Skills:</b> {{ internship.skills|join(', ') }}<br>
+                  {% endif %}
+                  {% if internship.stipend_amount %}
+                    <b>Stipend:</b> ₹{{ internship.stipend_amount|int }}<br>
+                  {% endif %}
+                  {% if internship.location %}
+                    <b>Location:</b> {{ loc_display[0] if loc_display else 'Unknown' }}<br>
+                  {% endif %}
+                  {% if internship.similarity_score %}
+                    <b>Match %:</b> {{ (internship.similarity_score * 100)|round(1) }}%<br>
+                  {% endif %}
+                </div>
+              </template>
+            </span>
+          </div>
         </div>
         <div class="card-footer">
           <button class="btn-apply"><i class="fas fa-external-link-alt"></i> Apply Now</button>
@@ -569,6 +602,61 @@
     <a href="{{ url_for('input_page') }}" class="back-btn"><i class="fas fa-arrow-left"></i> Go Back to Form</a>
     <a href="{{ url_for('home') }}" class="back-btn" style="margin-left: 15px;"><i class="fas fa-home"></i> Back to Home</a>
   </div>
+  <script>
+    let infoTooltipEl = null;
+    let hideTimeout = null;
+    function showInfoTooltip(iconSpan) {
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+      if (infoTooltipEl) return; // Don't recreate if already shown
+      const template = iconSpan.querySelector('.info-tooltip-template');
+      if (!template) return;
+      const tooltip = template.content.cloneNode(true).children[0];
+      document.body.appendChild(tooltip);
+      infoTooltipEl = tooltip;
+      // Position near icon
+      const rect = iconSpan.getBoundingClientRect();
+      let left = rect.right + 10;
+      let top = rect.top;
+      if (left + tooltip.offsetWidth > window.innerWidth) {
+        left = window.innerWidth - tooltip.offsetWidth - 20;
+      }
+      if (top + tooltip.offsetHeight > window.innerHeight) {
+        top = window.innerHeight - tooltip.offsetHeight - 20;
+      }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+      tooltip.style.display = 'block';
+      // Prevent flicker: keep tooltip visible when mouse is over it
+      tooltip.addEventListener('mouseover', function() {
+        if (hideTimeout) {
+          clearTimeout(hideTimeout);
+          hideTimeout = null;
+        }
+      });
+      tooltip.addEventListener('mouseout', function() {
+        scheduleHideInfoTooltip();
+      });
+    }
+    function hideInfoTooltip() {
+      if (infoTooltipEl) {
+        infoTooltipEl.remove();
+        infoTooltipEl = null;
+      }
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+    }
+    function scheduleHideInfoTooltip() {
+      if (hideTimeout) return;
+      hideTimeout = setTimeout(hideInfoTooltip, 200);
+    }
+    window.addEventListener('scroll', hideInfoTooltip);
+    window.addEventListener('resize', hideInfoTooltip);
+  </script>
 
   <style>
     .user-greeting {
