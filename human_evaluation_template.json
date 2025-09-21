@@ -1,13 +1,11 @@
 {
-  "evaluation_id": "eval_20250921_114216",
+  "evaluation_id": "eval_20250921_165735",
   "instructions": "Rate each recommendation set from 1-5 (1=Poor, 5=Excellent)",
   "test_cases": [
     {
       "case_id": 1,
       "input_skills": [
-        "Effective Communication",
-        "LinkedIn Marketing",
-        "MS-Excel"
+        "Telugu Proficiency (Spoken)"
       ],
       "expected_internship": {
         "id": 
