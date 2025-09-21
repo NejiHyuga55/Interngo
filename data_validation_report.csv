@@ -1,0 +1,14 @@
+check_name,status,message
+Role_null_check,PASS,Role has 0 null values
+Company Name_null_check,PASS,Company Name has 0 null values
+Duration_null_check,PASS,Duration has 0 null values
+Duration_range_check,FAIL,"Duration has 6 values outside range [1, 24]"
+Number of Applications_range_check,PASS,"Number of Applications has 0 values outside range [0, 10000]"
+Stipend Amount_range_check,PASS,"Stipend Amount has 0 values outside range [0, 100000]"
+Duration_dtype_check,PASS,Duration is numeric
+Number of Applications_dtype_check,PASS,Number of Applications is numeric
+Stipend Amount_dtype_check,PASS,Stipend Amount is numeric
+Skills_list_check,PASS,Skills contains valid lists
+Perks_list_check,PASS,Perks contains valid lists
+duplicate_check,FAIL,Found 172 duplicate Role-Company pairs
+stipend_consistency_check,FAIL,Found 50 records with stipend amount but no currency

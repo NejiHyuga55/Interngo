@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalize Your Search - PM Internship</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;family=Roboto:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+  * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f0f2f5;
+      color: #000;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+    
+    .top-bar { background-color: #4a4a4a; color: #ccc; font-family: 'Roboto', sans-serif; font-size: 12px; display: flex; align-items: center; padding: 4px 12px; gap: 12px; flex-wrap: nowrap; }
+    .top-bar .left, .top-bar .center, .top-bar .right { display: flex; align-items: center; gap: 8px; }
+    .top-bar .left { flex: 1 1 auto; }
+    .top-bar .center { flex: 2 1 auto; font-weight: 600; color: #eee; }
+    .top-bar .center .interngo { background: #2f2f2f; border-radius: 2px; padding: 0 6px; margin-right: 6px; font-weight: 700; font-size: 13px; color: #ddd; }
+    .top-bar .right { flex: 1 1 auto; justify-content: flex-end; font-weight: 600; }
+    .top-bar .right .app-builder { background: #222; border-radius: 2px; padding: 2px 6px; font-size: 12px; color: #ddd; }
+    .govt-bar { background-color: #000; color: #fff; font-family: 'Roboto', sans-serif; font-size: 14px; display: flex; align-items: center; justify-content: space-between; padding: 4px 12px; }
+    .govt-bar .left { display: flex; align-items: center; gap: 6px; }
+    .govt-bar .left img { width: 24px; height: 16px; object-fit: contain; }
+    .govt-bar .right { display: flex; align-items: center; gap: 12px; font-weight: 400; }
+    .interngo-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; color: #1a3f8a; background: linear-gradient(90deg, #1a3f8a, #f47920); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); }
+    header.main-header { max-width: 1500px; max-height: 90px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; background: #fff; gap: 12px; flex-wrap: wrap; }
+    .main-header .left-logos { display: flex; align-items: center; gap: 12px; flex: 1 1 auto; }
+    .main-header .left-logos img.govt-logo { width: 60px; height: auto; }
+    .main-header .left-logos img.internship-logo { width: 120px; height: auto; }
+    .main-header .right-buttons { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+    .btn-orange { background-color: #f47920; border: none; border-radius: 6px; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; padding: 10px 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 3px 0 #c05f18; transition: background-color 0.3s ease; }
+    .btn-orange:hover, .btn-orange:focus { background-color: #d96a1a; outline: none; }
+    nav.main-nav { background-color: #0b2a55; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 24px; padding: 8px 16px; flex-wrap: wrap; }
+    nav.main-nav a { color: #fff; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    nav.main-nav a:hover, nav.main-nav a:focus { text-decoration: underline; outline: none; }
+    .alert-banner { background-color: #fff7d6; color: #1a4a8a; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; padding: 8px 16px; border-radius: 8px; margin: 12px 16px 0 16px; overflow: hidden; white-space: nowrap; position: relative; }
+    .alert-banner strong { display: inline-block; animation: scroll-text 15s linear infinite; }
+    @keyframes scroll-text { 0% { transform: translateX(100%);} 100% { transform: translateX(-100%);} }
+
+    .form-wizard-container {
+      background: linear-gradient(145deg, #ffffff, #f9f9f9);
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .form-wizard-container .heading-group {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .form-wizard-container h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin: 0;
+      background: linear-gradient(90deg, #1a3f8a, #f47920);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .form-wizard-container h3 {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #555;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .form-wizard-container .separator {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #f47920, #1a3f8a);
+        margin: 0 auto;
+        border-radius: 2px;
+    }
+    .progress-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+      padding: 0 40px;
+      position: relative;
+    }
+    .progress-bar::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      right: 40px;
+      height: 6px;
+      background: #e0e0e0;
+      z-index: 1;
+      transform: translateY(-50%);
+      border-radius: 3px;
+    }
+    .progress-bar .progress-line {
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      height: 6px;
+      background: linear-gradient(90deg, #1a3f8a, #f47920);
+      z-index: 2;
+      transform: translateY(-50%);
+      border-radius: 3px;
+      width: 0;
+      transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      transition: all 0.3s ease;
+    }
+    .progress-step .step-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      transition: all 0.4s ease;
+      position: relative;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .progress-step.active .step-icon {
+      background-color: #f47920;
+      box-shadow: 0 4px 15px rgba(244, 121, 32, 0.4);
+    }
+    .progress-step.completed .step-icon {
+      background-color: #1a3f8a;
+      box-shadow: 0 4px 15px rgba(26, 63, 138, 0.4);
+      transform: scale(1.1);
+    }
+    .progress-step .step-icon i {
+      display: none;
+      color: #fff;
+    }
+    .progress-step.completed .step-icon i {
+      display: block;
+    }
+    .progress-step.completed .step-icon span {
+      display: none;
+    }
+    .progress-step .step-label {
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 10px;
+      color: #777;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+    .progress-step.active .step-label {
+      color: #f47920;
+    }
+    .progress-step.completed .step-label {
+      color: #1a3f8a;
+    }
+    .form-step {
+      display: none;
+      animation: fadeIn 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .form-step.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-group {
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      color: #1a3f8a;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+    .form-group input:not([type="checkbox"]),
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 18px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 17px;
+      font-family: 'Roboto', sans-serif;
+      transition: all 0.3s ease;
+      background-color: #f9f9f9;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #f47920;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(244, 121, 32, 0.3);
+    }
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 40px;
+    }
+    .form-actions button {
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .form-actions .prev-btn {
+      background: #ccc;
+      color: #555;
+    }
+    .form-actions .prev-btn:hover {
+      background: #bbb;
+      transform: translateY(-2px);
+    }
+    .form-actions .next-btn {
+      background: #1a3f8a;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(26, 63, 138, 0.2);
+    }
+    .form-actions .next-btn:hover {
+      background: #f47920;
+      box-shadow: 0 44px 15px rgba(244, 121, 32, 0.4);
+      transform: translateY(-2px);
+    }
+    .form-actions .submit-btn {
+        background: linear-gradient(45deg, #1a3f8a, #0b2a55);
+        color: #fff;
+        width: auto;
+        padding: 18px 40px;
+        box-shadow: 0 6px 20px rgba(26, 63, 138, 0.3);
+    }
+    .form-actions .submit-btn:hover {
+        background-color: #f47920;
+        box-shadow: 0 6px 20px rgba(244, 121, 32, 0.5);
+    }
+    .form-group .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .form-group .checkbox-container input[type="checkbox"] {
+        width: auto;
+        margin-right: 12px;
+        transform: scale(1.5);
+    }
+    
+    /* Error message styling */
+    .error-message {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-top: 8px;
+      display: none;
+      font-weight: 500;
+    }
+    
+    .input-error {
+      border-color: #e74c3c !important;
+      background-color: #fdf2f2 !important;
+    }
+    
+    .suggestion-box {
+      position: absolute;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 10;
+      display: none;
+    }
+    
+    .suggestion-item {
+      padding: 12px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .suggestion-item:hover {
+      background-color: #f5f8ff;
+    }
+    
+    .suggestion-item:last-child {
+      border-bottom: none;
+    }
+    .user-greeting {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1a3f8a;
+    background: rgba(244, 121, 32, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-right: 10px;
+    }
+
+    .logout-btn {
+        background-color: transparent;
+        border: 2px solid #f47920;
+        border-radius: 6px;
+        color: #f47920;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 8px 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .logout-btn:hover {
+        background-color: #f47920;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+  <div aria-label="Government of India banner" class="govt-bar" role="contentinfo">
+   <div class="left">
+    <img alt="Flag of India" src="{{ url_for('static', filename='images/flag-in.png') }}"/>
+    <span>
+     AI BASED PM INTERNSHIP RECOMMENDATION ENGINE
+    </span>
+   </div>
+   <div class="right">
+    <select aria-label="Select language" title="Select language">
+     <option>English</option>
+     <option>Hindi</option>
+     <option>Other</option>
+    </select>
+    <span><i aria-hidden="true" class="fas fa-file-alt"></i> /</span>
+    <div aria-label="Screen reader" class="screen-reader">
+     <i aria-hidden="true" class="fas fa-users"></i>
+    </div>
+   </div>
+  </div>
+  
+  <header aria-label="Main header with logos and buttons" class="main-header" role="banner">
+   <div class="left-logos">
+    <img alt="Ministry of Corporate Affairs Government of India logo" class="govt-logo" src="{{ url_for('static', filename='images/govt-logo.png') }}"/>
+    <p class="interngo-title">INTERNGO</p>
+   </div>
+   <div class="right-buttons">
+    {% if not session.user %}
+    <a href="{{ url_for('register') }}">
+      <button aria-label="register" class="btn-orange">
+        <i aria-hidden="true" class="fas fa-user-circle"></i> Register
+      </button>
+    </a>
+    <a href="{{ url_for('login') }}">
+      <button aria-label="Login" class="btn-orange">
+        <i aria-hidden="true" class="fas fa-user-circle"></i> Login
+      </button>
+    </a>
+    {% else %}
+    <span class="user-greeting">Welcome, {{ session.user }}</span>
+    <a href="{{ url_for('logout') }}">
+      <button class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </a>
+    {% endif %}
+   </div>
+  </header>
+  
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a>
+    <a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a>
+    <a href="#"><i class="fas fa-book"></i> Resources</a>
+    <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+  </nav>
+  
+  <div class="alert-banner">
+    <strong> Enter your information below and explore top 3–5 internship matches instantly 🚀.</strong>
+  </div>
+  
+  <section class="form-wizard-container">
+    <div class="heading-group">
+      <h2>Personalize Your Internship Search</h2>
+      <h3>Powered by AI for the Prime Minister Internship Scheme</h3>
+      <div class="separator"></div>
+    </div>
+    
+    <div class="progress-bar">
+      <div class="progress-line"></div>
+      <div class="progress-step active" id="step-1">
+        <span class="step-icon"><span>1</span><i class="fas fa-check"></i></span>
+        <span class="step-label">Education</span>
+      </div>
+      <div class="progress-step" id="step-2">
+        <span class="step-icon"><span>2</span><i class="fas fa-check"></i></span>
+        <span class="step-label">Skills & Experience</span>
+      </div>
+      <div class="progress-step" id="step-3">
+        <span class="step-icon"><span>3</span><i class="fas fa-check"></i></span>
+        <span class="step-label">Location & prefs</span>
+      </div>
+    </div>
+    
+    <form id="multi-step-form" action="{{ url_for('process_input') }}" method="POST" onsubmit="return validateAllSteps()">
+    <div class="form-step active" data-step="1">
+        <div class="form-group">
+            <label for="education">Education Level *</label>
+            <select id="education" name="education" required>
+                <option value="">Select</option>
+                <option value="high-school">High School</option>
+                <option value="undergraduate">Undergraduate (B.A., B.S., B.Tech, etc.)</option>
+                <option value="postgraduate">Postgraduate (M.A., M.S., M.Tech, etc.)</option>
+                <option value="phd">Doctorate (Ph.D.)</option>
+            </select>
+            <div class="error-message" id="education-error"></div>
+        </div>
+        <div class="form-group">
+            <label for="field-of-study">Field of Study *</label>
+            <input type="text" id="field-of-study" name="field_of_study" placeholder="e.g., Computer Science, Mechanical Engineering" required>
+            <div class="error-message" id="field-of-study-error"></div>
+        </div>
+    </div>
+
+    <div class="form-step" data-step="2">
+        <div class="form-group">
+            <label for="skills">Key Skills *</label>
+            <textarea id="skills" name="skills" placeholder="List your key skills, separated by commas (e.g., Python, UI/UX Design, Digital Marketing)" required></textarea>
+            <div class="error-message" id="skills-error"></div>
+        </div>
+        <div class="form-group">
+            <label for="experience">Experience <span style="font-weight: 400; color: #888;">(Optional)</span></label>
+            <textarea id="experience" name="experience" placeholder="Briefly describe any relevant work or project experience."></textarea>
+        </div>
+    </div>
+
+    <div class="form-step" data-step="3">
+        <div class="form-group">
+            <label for="sector">Preferred Sector *</label>
+            <select id="sector" name="sector" required>
+                    <option value="">Select a sector...</option>
+                    <option value="technology">Technology & IT</option>
+                    <option value="business-development">Business Development & Sales</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                    <option value="content-writing">Content Writing & Copywriting</option>
+                    <option value="graphic-design">Graphic Design</option>
+                    <option value="video-editing">Video Editing & Making</option>
+                    <option value="social-media">Social Media Marketing</option>
+                    <option value="hr">Human Resources (HR)</option>
+                    <option value="web-development">Web Development</option>
+                    <option value="operations">Operations</option>
+                    <option value="data-science">Data Science & Analytics</option>
+                    <option value="finance">Finance & Accounting</option>
+                    <option value="teaching">Teaching & Education</option>
+                    <option value="engineering">Engineering (Mechanical, Electrical, Civil, etc.)</option>
+                    <option value="law">Law/Legal</option>
+                    <option value="healthcare">Healthcare & Nutrition</option>
+                    <option value="architecture">Architecture & Interior Design</option>
+                    <option value="fashion">Fashion Design & Merchandising</option>
+                    <option value="event-management">Event Management</option>
+                    <option value="market-research">Market Research</option>
+                    <option value="supply-chain">Supply Chain & Logistics</option>
+                    <option value="photography">Photography & Cinematography</option>
+                    <option value="pr">Public Relations (PR)</option>
+                    <option value="game-development">Game Development & Testing</option>
+                    <option value="seo">SEO & SEM</option>
+                    <option value="telecalling">Telecalling & Customer Support</option>
+                    <option value="fundraising">Fundraising & NGO</option>
+                    <option value="ai-ml">Artificial Intelligence & Machine Learning</option>
+                    <option value="blockchain">Blockchain & Crypto</option>
+                    <option value="robotics">Robotics & IoT</option>
+                    <option value="sustainability">Sustainability & Climate Tech</option>
+                    <option value="ngo">Non-profit & Social Work</option>
+                    
+                    <option value="other">Other</option>
+                </select>
+            <div class="error-message" id="sector-error"></div>
+        </div>
+        <div class="form-group">
+            <label for="location">Location *</label>
+            <input type="text" id="location" name="location" placeholder="e.g., New Delhi, Bengaluru" required>
+            <div class="error-message" id="location-error">Please enter a valid location name (letters, spaces, and commas only)</div>
+            <div class="suggestion-box" id="location-suggestions">
+                <!-- Suggestions will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="button" class="prev-btn" onclick="prevStep()">
+            <i class="fas fa-arrow-left"></i> Previous
+        </button>
+        <button type="button" class="next-btn" onclick="nextStep()" id="next-button">
+            Next <i class="fas fa-arrow-right"></i>
+        </button>
+        <button type="submit" class="submit-btn" id="submit-button" style="display:none;">
+            <i class="fas fa-search"></i> Find My Internships
+        </button>
+    </div>
+</form>
+  </section>
+
+  <script>
+    let currentStep = 1;
+    const formSteps = document.querySelectorAll('.form-step');
+    const progressSteps = document.querySelectorAll('.progress-step');
+    const progressLine = document.querySelector('.progress-line');
+    const nextButton = document.getElementById('next-button');
+    const submitButton = document.getElementById('submit-button');
+    const prevButton = document.querySelector('.prev-btn');
+    const locationInput = document.getElementById('location');
+    const locationError = document.getElementById('location-error');
+    const suggestionBox = document.getElementById('location-suggestions');
+
+    const indianCities = [
+      "Kolkata",
+"Chennai",
+"Bengaluru",
+"Mumbai",
+"Delhi",
+"Hyderabad",
+"Pune",
+"Ahmedabad",
+"Jaipur",
+"Surat",
+"Lucknow",
+"Kanpur",
+"Nagpur",
+"Patna",
+"Indore",
+"Thane",
+"Bhopal",
+"Visakhapatnam",
+"Vadodara",
+"Firozabad",
+"Ludhiana",
+"Rajkot",
+"Agra",
+"Siliguri",
+"Nashik",
+"Faridabad",
+"Patiala",
+"Meerut",
+"Kalyan-Dombivli",
+"Vasai-Virar",
+"Varanasi",
+"Srinagar",
+"Dhanbad",
+"Jodhpur",
+"Amritsar",
+"Raipur",
+"Allahabad",
+"Coimbatore",
+"Jabalpur",
+"Gwalior",
+"Vijayawada",
+"Madurai",
+"Guwahati",
+"Chandigarh",
+"Hubli-Dharwad",
+"Amroha",
+"Moradabad",
+"Gurgaon",
+"Aligarh",
+"Solapur",
+"Ranchi",
+"Jalandhar",
+"Tiruchirappalli",
+"Bhubaneswar",
+"Salem",
+"Warangal",
+"Mira-Bhayandar",
+"Thiruvananthapuram",
+"Bhiwandi",
+"Saharanpur",
+"Guntur",
+"Amravati",
+"Bikaner",
+"Noida",
+"Jamshedpur",
+"Bhilai",
+"Cuttack",
+"Firozpur",
+"Kochi",
+"Nellore",
+"Bhavnagar",
+"Dehradun",
+"Durgapur",
+"Asansol",
+"Rourkela",
+"Nanded",
+"Kolhapur",
+"Ajmer",
+"Akola",
+"Gulbarga",
+"Jamnagar",
+"Ujjain",
+"Loni",
+"Silchar",
+"Jhansi",
+"Ulhasnagar",
+"Jammu",
+"Sangli-Miraj & Kupwad",
+"Mangalore",
+"Erode",
+"Belgaum",
+"Kurnool",
+"Ambattur",
+"Rajahmundry",
+"Tirunelveli",
+"Malegaon",
+"Gaya",
+"Udaipur",
+"Korba",
+"Bokaro Steel City",
+"Rajpur Sonarpur",
+"South Dumdum",
+"Bellary",
+"Patiala",
+"Gopalpur",
+"Agartala",
+"Bhagalpur",
+"Muzaffarnagar",
+"Bhatpara",
+"Panihati",
+"Latur",
+"Dhule",
+"Tirupati",
+"Rohtak",
+"Koratla",
+"Bhilwara",
+"Bharatpur",
+"Hapur",
+"Panipat",
+"Rampur",
+"Shivamogga",
+"Chandrapur",
+"Junagadh",
+"Thrissur",
+"Alwar",
+"Bardhaman",
+"Kulti",
+"Nizamabad",
+"Parbhani",
+"Tumkur",
+"Khammam",
+"Ozhukarai",
+"Bihar Sharif",
+"Panvel",
+"Darbhanga",
+"Bally",
+"Aizawl",
+"Dewas",
+"Ichalkaranji",
+"Tirupur",
+"Karnal",
+"Bathinda",
+"Jalna",
+"Barasat",
+"Kirari Suleman Nagar",
+"Purnia",
+"Satna",
+"Mau",
+"Sonipat",
+"Farrukhabad",
+"Sagar",
+"Rourkela",
+"Durg",
+"Imphal",
+"Ratlam",
+"Haldia",
+"Bhusawal",
+"Raiganj",
+"Bidar",
+"Dindigul",
+"Chittoor",
+"Nagercoil",
+"Kharagpur",
+"Hospet",
+"Naihati",
+"Sambalpur",
+"Puri",
+"Hassan",
+"Udupi",
+"Vellore",
+"Ongole",
+"Proddatur",
+"Sikar",
+"Gandhinagar",
+"Baranagar",
+"Palakkad",
+"Anantapur",
+"Arrah",
+"Malkajgiri",
+"Guntakal",
+"Medininagar",
+"Katni",
+"Kadapa",
+"Kamarhati",
+"Suryapet",
+"Bhimavaram",
+"Baidyabati",
+"Kishanganj",
+"Port Blair",
+"Bhind",
+"Chandannagar",
+"Balurghat",
+"Panchkula",
+"Navsari",
+"Kanpur Cantonment",
+"Vapi",
+"Gangtok",
+"Krishnanagar",
+"Karaikudi",
+"Kishangarh",
+"Kharagpur",
+"Bongaigaon",
+"Hajipur",
+"Phusro",
+"Dehri",
+"Madanapalle",
+"Siwan",
+"Bettiah",
+"Ramgarh",
+"Tinsukia",
+"Guntur",
+"Srikakulam",
+"Motihari",
+"Dharmavaram",
+"Medinipur",
+"Gudivada",
+"Phagwara",
+"Pudukkottai",
+"Hosur",
+"Narasaraopet",
+"Suryapet",
+"Miryalaguda",
+"Anjangaon",
+"Tadepalligudem",
+"Karaikal",
+"Karaikudi",
+"Kavali",
+"Dhamtari",
+"Abohar",
+"Padrauna",
+"Bhadrak",
+"Rajsamand",
+"Lohardaga",
+"Tenu dam-cum-Kathhara"
+    ];
+
+    function validateLocation(location) {
+    
+      if (!location.trim()) {
+        return { isValid: false, message: "Location is required" };
+      }
+      
+      const validLocationPattern = /^[a-zA-Z\s,\-]+$/;
+      if (!validLocationPattern.test(location)) {
+        return { 
+          isValid: false, 
+          message: "Location can only contain letters, spaces, commas, and hyphens" 
+        };
+      }
+      if (location.trim().length < 2) {
+        return { 
+          isValid: false, 
+          message: "Location must be at least 2 characters long" 
+        };
+      }
+      
+      return { isValid: true, message: "" };
+    }
+
+    function showError(inputElement, errorElement, message) {
+      inputElement.classList.add('input-error');
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+
+    function hideError(inputElement, errorElement) {
+      inputElement.classList.remove('input-error');
+      errorElement.style.display = 'none';
+    }
+
+    function validateStep(step) {
+      let isValid = true;
+      
+      if (step === 1) {
+        const education = document.getElementById('education');
+        const fieldOfStudy = document.getElementById('field-of-study');
+        const educationError = document.getElementById('education-error');
+        const fieldOfStudyError = document.getElementById('field-of-study-error');
+        
+        if (!education.value) {
+          showError(education, educationError, "Please select your education level");
+          isValid = false;
+        } else {
+          hideError(education, educationError);
+        }
+        
+        if (!fieldOfStudy.value.trim()) {
+          showError(fieldOfStudy, fieldOfStudyError, "Please enter your field of study");
+          isValid = false;
+        } else {
+          hideError(fieldOfStudy, fieldOfStudyError);
+        }
+      }
+      
+      if (step === 2) {
+        const skills = document.getElementById('skills');
+        const skillsError = document.getElementById('skills-error');
+        
+        if (!skills.value.trim()) {
+          showError(skills, skillsError, "Please enter your key skills");
+          isValid = false;
+        } else {
+          hideError(skills, skillsError);
+        }
+      }
+      
+      if (step === 3) {
+        const sector = document.getElementById('sector');
+        const sectorError = document.getElementById('sector-error');
+        
+        if (!sector.value) {
+          showError(sector, sectorError, "Please select a preferred sector");
+          isValid = false;
+        } else {
+          hideError(sector, sectorError);
+        }
+        
+        const locationValidation = validateLocation(locationInput.value);
+        if (!locationValidation.isValid) {
+          showError(locationInput, locationError, locationValidation.message);
+          isValid = false;
+        } else {
+          hideError(locationInput, locationError);
+        }
+      }
+      
+      return isValid;
+    }
+
+    locationInput.addEventListener('focus', function() {
+
+      suggestionBox.style.display = 'block';
+    });
+    
+    locationInput.addEventListener('input', function() {
+      const value = this.value.toLowerCase();
+      
+
+      const filteredSuggestions = indianCities.filter(city => 
+        city.toLowerCase().includes(value)
+      );
+      
+
+      if (filteredSuggestions.length > 0 && value.length > 0) {
+        suggestionBox.innerHTML = filteredSuggestions.map(city => 
+          `<div class="suggestion-item" data-value="${city}">${city}</div>`
+        ).join('');
+        suggestionBox.style.display = 'block';
+      } else if (value.length === 0) {
+ 
+        suggestionBox.innerHTML = indianCities.map(city => 
+          `<div class="suggestion-item" data-value="${city}">${city}</div>`
+        ).join('');
+        suggestionBox.style.display = 'block';
+      } else {
+        suggestionBox.style.display = 'none';
+      }
+      
+
+      const locationValidation = validateLocation(this.value);
+      if (!locationValidation.isValid && this.value.length > 0) {
+        showError(this, locationError, locationValidation.message);
+      } else {
+        hideError(this, locationError);
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      if (e.target !== locationInput) {
+        suggestionBox.style.display = 'none';
+      }
+    });
+    
+    suggestionBox.addEventListener('click', function(e) {
+      if (e.target.classList.contains('suggestion-item')) {
+        locationInput.value = e.target.getAttribute('data-value');
+        suggestionBox.style.display = 'none';
+        hideError(locationInput, locationError);
+      }
+    });
+
+    function updateProgressBar() {
+        const totalSteps = progressSteps.length;
+        const completedSteps = currentStep - 1;
+        const progressPercentage = (completedSteps / (totalSteps - 1)) * 100;
+        
+        progressLine.style.width = `${progressPercentage}%`;
+    }
+
+    function showStep(step) {
+      formSteps.forEach(s => s.classList.remove('active'));
+      document.querySelector(`[data-step="${step}"]`).classList.add('active');
+      
+      progressSteps.forEach((s, index) => {
+        s.classList.remove('active', 'completed');
+        if (index + 1 < step) {
+          s.classList.add('completed');
+        } else if (index + 1 === step) {
+          s.classList.add('active');
+        }
+      });
+      
+      updateProgressBar();
+
+      if (step === formSteps.length) {
+        nextButton.style.display = 'none';
+        submitButton.style.display = 'inline-flex';
+      } else {
+        nextButton.style.display = 'inline-flex';
+        submitButton.style.display = 'none';
+      }
+
+      prevButton.style.display = step === 1 ? 'none' : 'inline-flex';
+    }
+
+    function nextStep() {
+      if (!validateStep(currentStep)) {
+        return;
+      }
+      
+      currentStep++;
+      if (currentStep > formSteps.length) {
+        currentStep = formSteps.length;
+      }
+      showStep(currentStep);
+    }
+
+    function prevStep() {
+      currentStep--;
+      if (currentStep < 1) {
+        currentStep = 1;
+      }
+      showStep(currentStep);
+    }
+
+    function validateAllSteps() {
+    return validateStep(1) && validateStep(2) && validateStep(3);
+}
+
+// Update the form submission handler
+document.getElementById('multi-step-form').addEventListener('submit', function(e) {
+    if (!validateAllSteps()) {
+        e.preventDefault();
+        // Go to the first step with errors
+        if (!validateStep(1)) currentStep = 1;
+        else if (!validateStep(2)) currentStep = 2;
+        else if (!validateStep(3)) currentStep = 3;
+        showStep(currentStep);
+        alert('Please fix the errors before submitting.');
+    }
+    // If all validations pass, the form will submit normally
+});
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showStep(currentStep);
+      
+      suggestionBox.innerHTML = indianCities.map(city => 
+        `<div class="suggestion-item" data-value="${city}">${city}</div>`
+      ).join('');
+    });
+  </script>
+</body>
+</html>

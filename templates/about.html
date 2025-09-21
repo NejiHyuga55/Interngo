@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - InternGo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+  * { 
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  
+  a { 
+    text-decoration: none; 
+    color: inherit; 
+  }
+  
+  img { 
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .top-bar { 
+    background-color: #2c3e50; 
+    color: #ecf0f1; 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 13px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 8px 20px; 
+    flex-wrap: wrap;
+  }
+  
+  .top-bar .left, 
+  .top-bar .center, 
+  .top-bar .right { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+  }
+  
+  .top-bar .center { 
+    font-weight: 600; 
+  }
+  
+  .top-bar .center .interngo { 
+    background: rgba(255, 255, 255, 0.15); 
+    border-radius: 4px; 
+    padding: 3px 8px; 
+    margin-right: 6px; 
+    font-weight: 700; 
+    font-size: 13px; 
+  }
+  
+  .top-bar .right .app-builder { 
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 4px; 
+    padding: 4px 8px; 
+    font-size: 12px; 
+  }
+  
+  .govt-bar { 
+    background: linear-gradient(90deg, #1a3f8a 0%, #0b2a55 100%); 
+    color: #fff; 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 15px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 10px 20px; 
+  }
+  
+  .govt-bar .left { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+  }
+  
+  .govt-bar .left img { 
+    width: 28px; 
+    height: 20px; 
+    object-fit: contain; 
+  }
+  
+  .govt-bar .right { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    font-weight: 400; 
+  }
+  
+  .govt-bar select {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+  }
+  
+  .interngo-title { 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: 28px; 
+    background: linear-gradient(90deg, #1a3f8a, #f47920); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); 
+  }
+  
+  header.main-header { 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 15px 30px; 
+    background: #fff; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 0 0 10px 10px;
+  }
+  
+  .main-header .left-logos { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+  }
+  
+  .main-header .left-logos img.govt-logo { 
+    width: 65px; 
+    height: auto; 
+  }
+  
+  .main-header .right-buttons { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+  }
+  
+  .btn-orange { 
+    background-color: #f47920; 
+    border: none; 
+    border-radius: 8px; 
+    color: #fff; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    font-size: 16px; 
+    padding: 12px 24px; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    white-space: nowrap; 
+    box-shadow: 0 4px 0 #c05f18; 
+    transition: all 0.3s ease; 
+  }
+  
+  .btn-orange:hover, 
+  .btn-orange:focus { 
+    background-color: #e06e1d; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #c05f18; 
+  }
+  
+  nav.main-nav { 
+    background: linear-gradient(90deg, #1a3f8a 0%, #0b2a55 100%); 
+    color: #fff; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 600; 
+    font-size: 15px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 30px; 
+    padding: 12px 20px; 
+    flex-wrap: wrap;
+  }
+  
+  nav.main-nav a { 
+    color: #fff; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    white-space: nowrap; 
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  nav.main-nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+  }
+  nav.main-nav a:hover, 
+  nav.main-nav a:focus { 
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .about-hero {
+      background: linear-gradient(135deg, #1a3f8a 0%, #0b2a55 100%);
+      color: #fff;
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0 0 30px 30px;
+  }
+  .about-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+  }
+  .about-hero p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      font-weight: 300;
+      line-height: 1.6;
+  }
+
+  .about-content {
+      padding: 80px 0;
+  }
+  .about-content .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #1a3f8a;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+  }
+  .about-content .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #f47920;
+      border-radius: 2px;
+  }
+  .about-content .text-block {
+      max-width: 900px;
+      margin: 40px auto 60px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+  }
+  .about-content .text-block h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0b2a55;
+      margin-top: 30px;
+      margin-bottom: 15px;
+  }
+
+  .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+  }
+  .value-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-top: 4px solid #f47920;
+  }
+  .value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+  }
+  .value-card i {
+    font-size: 48px;
+    color: #1a3f8a;
+    margin-bottom: 20px;
+  }
+  .value-card h3 {
+    font-size: 22px;
+    margin: 15px 0;
+    color: #1a3f8a;
+  }
+  .value-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .cta-section {
+      background: linear-gradient(45deg, #f47920 0%, #ff9933 100%);
+      color: #fff;
+      padding: 60px 40px;
+      text-align: center;
+      margin: 40px 0;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(244, 121, 32, 0.2);
+  }
+  .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 15px;
+  }
+  .cta-section p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+  }
+  
+  .cta-section .btn-orange {
+      background: #1a3f8a;
+      box-shadow: 0 4px 0 #0f2a5a;
+  }
+  .cta-section .btn-orange:hover {
+      background: #0f2a5a;
+      box-shadow: 0 6px 0 #0a1e42;
+  }
+  
+  footer {
+    background: linear-gradient(90deg, #0b2a55, #1a3f8a);
+    color: #fff;
+    padding: 50px 0 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .footer-column h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #f47920;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 12px;
+  }
+  
+  .footer-column ul li a {
+    color: #ccc;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  
+  .footer-column ul li a:hover {
+    color: #f47920;
+    transform: translateX(5px);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    color: #aaa;
+  }
+
+  @media (max-width: 992px) {
+      .about-hero h1 {
+          font-size: 2.5rem;
+      }
+      .about-hero p {
+          font-size: 1rem;
+      }
+      .about-content .section-title {
+          font-size: 2rem;
+      }
+  }
+  @media (max-width: 768px) {
+    header.main-header {
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+    }
+    nav.main-nav {
+      gap: 15px;
+      padding: 10px 15px;
+    }
+    .about-hero {
+      padding: 60px 20px;
+    }
+    .about-hero h1 {
+      font-size: 2rem;
+    }
+    .about-content {
+      padding: 60px 0;
+    }
+    .about-content .section-title {
+      font-size: 1.8rem;
+    }
+  }
+  </style>
+</head>
+<body>
+  
+ 
+    
+   
+    
+  <section class="about-hero">
+    <h1>Our Story & Mission</h1>
+    <p>
+      At InternGo, we believe that every student deserves a chance to find the perfect internship that aligns with their passion and potential. Our journey began with a simple idea: to remove the friction from the internship search process using technology and a deep commitment to India's youth.
+    </p>
+  </section>
+
+  <section class="about-content">
+      <div class="container">
+          <h2 class="section-title">Who We Are</h2>
+          <div class="text-block">
+              <p>
+                  InternGo is a dedicated platform operating under the **Prime Minister Internship Scheme**. We are a team of technologists and career experts committed to bridging the gap between talent and opportunity. Our goal is to create a transparent and efficient ecosystem where students can easily find and apply for government and private sector internships, while organizations can discover bright, motivated individuals.
+              </p>
+              <h4>Our Vision</h4>
+              <p>
+                  To be the leading AI-powered platform for student internships in India, empowering millions of young people to gain invaluable work experience, grow their professional networks, and contribute to the nation's development.
+              </p>
+          </div>
+
+          <h2 class="section-title">Our Core Values</h2>
+          <div class="values-grid">
+              <div class="value-card">
+                  <i class="fas fa-lightbulb"></i>
+                  <h3>Innovation</h3>
+                  <p>We use cutting-edge AI technology to provide smarter, more personalized internship recommendations.</p>
+              </div>
+              <div class="value-card">
+                  <i class="fas fa-hands-helping"></i>
+                  <h3>Empowerment</h3>
+                  <p>Our platform is built to empower students with the tools and information they need to succeed.</p>
+              </div>
+              <div class="value-card">
+                  <i class="fas fa-shield-alt"></i>
+                  <h3>Integrity</h3>
+                  <p>We ensure a secure, fair, and transparent process for both students and internship providers.</p>
+              </div>
+              <div class="value-card">
+                  <i class="fas fa-users"></i>
+                  <h3>Community</h3>
+                  <p>We foster a community of learning and growth, connecting students with mentors and opportunities.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <div class="cta-section">
+      <div class="container">
+          <h2>Ready to Find Your Internship?</h2>
+          <p>Let our AI engine find the perfect opportunity for you in just a few clicks.</p>
+          <a href="{{url_for('input_page')}}">
+              <button aria-label="Find Internships" class="btn-orange">
+                  <i aria-hidden="true" class="fas fa-search"></i>
+                  Get Started
+              </button>
+          </a>
+      </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Us</h3>
+          <ul>
+            <li><a href="about.html">About PM Internship</a></li>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="about.html">Team</a></li>
+            <li><a href="about.html">Partners</a></li>
+          </ul>
+        
+  </footer>
+</body>
+</html>

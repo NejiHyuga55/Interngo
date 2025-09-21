@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InternGo - Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at 10% 20%, rgb(255, 255, 255) 0%, rgb(240, 240, 240) 90%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+    .login-container {
+      background: #fff;
+      padding: 45px 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .login-container:hover {
+        transform: translateY(-5px);
+    }
+    .login-container h2 {
+      color: #ff6600;
+      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #f9f9f9;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      box-sizing: border-box; 
+    }
+    .login-container input:focus {
+      border-color: #002147;
+      background: #fff;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 33, 71, 0.15);
+    }
+    .login-container button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 25px;
+      background: #ff6600;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .login-container button:hover {
+      background: #e65c00;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,102,0,0.3);
+    }
+    .options-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    .options-container label {
+        display: flex;
+        align-items: center;
+        color: #555;
+    }
+    .options-container input[type="checkbox"] {
+        width: auto;
+        margin-right: 8px;
+    }
+    .options-container a {
+        color: #002147;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+    .options-container a:hover {
+      color: #ff6600;
+      text-decoration: underline;
+    }
+    .login-container p {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+    .login-container a.register {
+      color: #002147;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .login-container a.register:hover {
+      color: #ff6600;
+      text-decoration: underline;
+    }
+    /* Flash message styles */
+    .flash-messages {
+      margin-bottom: 20px;
+    }
+    
+    .flash-message {
+      padding: 12px;
+      background: #ffebee;
+      color: #c62828;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 4px solid #c62828;
+      font-size: 14px;
+    }
+    
+    .flash-success {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-left: 4px solid #2e7d32;
+    }
+    
+    @media (max-width: 480px) {
+      .login-container {
+        width: 90%;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>InternGo Login</h2>
+    
+    <!-- Flash messages for feedback -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+            <div class="flash-message {% if category == 'success' %}flash-success{% endif %}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    
+    <form action="{{ url_for('login') }}" method="POST">
+      <input type="text" name="nm" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+
+      <div class="options-container">
+        <label>
+          <input type="checkbox" name="remember"> Remember Me
+        </label>
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{{ url_for('register') }}" class="register">Register</a></p>
+  </div>
+
+</body>
+</html>

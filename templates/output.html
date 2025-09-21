@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship Recommendations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    a { 
+      text-decoration: none; 
+      color: inherit; 
+    }
+    
+    img { 
+      max-width: 100%; 
+      height: auto; 
+      display: block; 
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .top-bar { 
+      background-color: #2c3e50; 
+      color: #ecf0f1; 
+      font-family: 'Roboto', sans-serif; 
+      font-size: 13px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      padding: 8px 20px; 
+      flex-wrap: wrap;
+    }
+    
+    .top-bar .left, 
+    .top-bar .center, 
+    .top-bar .right { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+    }
+    
+    .top-bar .center { 
+      font-weight: 600; 
+    }
+    
+    .top-bar .center .interngo { 
+      background: rgba(255, 255, 255, 0.15); 
+      border-radius: 4px; 
+      padding: 3px 8px; 
+      margin-right: 6px; 
+      font-weight: 700; 
+      font-size: 13px; 
+    }
+    
+    .top-bar .right .app-builder { 
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 4px; 
+      padding: 4px 8px; 
+      font-size: 12px; 
+    }
+    
+    .govt-bar { 
+      background: linear-gradient(90deg, #1a3f8a 0%, #0b2a55 100%); 
+      color: #fff; 
+      font-family: 'Roboto', sans-serif; 
+      font-size: 15px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 10px 20px; 
+    }
+    
+    .govt-bar .left { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+    }
+    
+    .govt-bar .left img { 
+      width: 28px; 
+      height: 20px; 
+      object-fit: contain; 
+    }
+    
+    .govt-bar .right { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+      font-weight: 400; 
+    }
+    
+    .govt-bar select {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      color: white;
+      padding: 4px 8px;
+    }
+    
+    .interngo-title { 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 900; 
+      font-size: 28px; 
+      background: linear-gradient(90deg, #1a3f8a, #f47920); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); 
+    }
+    
+    header.main-header { 
+      max-width: 1400px; 
+      margin: 0 auto; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 15px 30px; 
+      background: #fff; 
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border-radius: 0 0 10px 10px;
+    }
+    
+    .main-header .left-logos { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+    }
+    
+    .main-header .left-logos img.govt-logo { 
+      width: 65px; 
+      height: auto; 
+    }
+    
+    .main-header .right-buttons { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+    }
+    
+    .btn-orange { 
+      background-color: #f47920; 
+      border: none; 
+      border-radius: 8px; 
+      color: #fff; 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 700; 
+      font-size: 16px; 
+      padding: 12px 24px; 
+      cursor: pointer; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      white-space: nowrap; 
+      box-shadow: 0 4px 0 #c05f18; 
+      transition: all 0.3s ease; 
+    }
+    
+    .btn-orange:hover, 
+    .btn-orange:focus { 
+      background-color: #e06e1d; 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #c05f18; 
+    }
+    
+    nav.main-nav { 
+      background: linear-gradient(90deg, #1a3f8a 0%, #0b2a55 100%); 
+      color: #fff; 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 600; 
+      font-size: 15px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 30px; 
+      padding: 12px 20px; 
+      flex-wrap: wrap;
+    }
+    
+    nav.main-nav a { 
+      color: #fff; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      white-space: nowrap; 
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    
+    nav.main-nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    nav.main-nav a:hover, 
+    nav.main-nav a:focus { 
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .alert-banner { 
+      background: linear-gradient(90deg, #fff7d6 0%, #fff0b3 100%); 
+      color: #1a4a8a; 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 600; 
+      font-size: 15px; 
+      padding: 12px 20px; 
+      border-radius: 8px; 
+      margin: 20px auto; 
+      max-width: 1400px;
+      overflow: hidden; 
+      position: relative;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .alert-banner strong { 
+      display: inline-block; 
+      animation: scroll-text 20s linear infinite; 
+    }
+    
+    @keyframes scroll-text { 
+      0% { transform: translateX(100%); } 
+      100% { transform: translateX(-100%); } 
+    }
+    
+    .recommendations-header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(90deg, #1a3f8a, #f47920);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 20px;
+    }
+
+    .recommendations-header h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .recommendations-header p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .internship-list {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .internship-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 30px;
+      border-left: 5px solid #1a3f8a;
+    }
+    
+    .internship-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .internship-card .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .internship-card .card-header h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #1a3f8a;
+    }
+    .internship-card .card-header p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #666;
+    }
+
+    .internship-card .card-body p {
+        font-family: 'Roboto', sans-serif;
+        color: #555;
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+    .internship-card .card-body ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .internship-card .card-body ul li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #444;
+    }
+    .internship-card .card-body ul li i {
+        color: #f47920;
+        width: 20px;
+        text-align: center;
+    }
+
+    .internship-card .card-footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .internship-card .card-footer .btn-apply {
+        background-color: #f47920; 
+        border: none; 
+        border-radius: 50px; 
+        color: #fff; 
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: 700; 
+        font-size: 16px; 
+        padding: 12px 24px; 
+        cursor: pointer; 
+        display: flex; 
+        align-items: center; 
+        gap: 10px; 
+        white-space: nowrap; 
+        transition: all 0.3s ease; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .internship-card .card-footer .btn-apply:hover {
+        background-color: #e06e1d; 
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .back-btn-container {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .back-btn {
+      background-color: #1a3f8a;
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 15px 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(26, 63, 138, 0.25);
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background-color: #0b2a55;
+      box-shadow: 0 6px 18px rgba(26, 63, 138, 0.35);
+      transform: translateY(-2px);
+    }
+    .user-greeting {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1a3f8a;
+    background: rgba(244, 121, 32, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-right: 10px;
+    }
+
+    .logout-btn {
+        background-color: transparent;
+        border: 2px solid #f47920;
+        border-radius: 6px;
+        color: #f47920;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 8px 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .logout-btn:hover {
+        background-color: #f47920;
+        color: white;
+    }
+
+    .no-recommendations {
+        text-align: center;
+        padding: 40px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .no-recommendations h3 {
+        color: #1a3f8a;
+        margin-bottom: 15px;
+    }
+
+    .no-recommendations p {
+        color: #666;
+    }
+    
+    @media (max-width: 768px) {
+        .recommendations-header h1 {
+            font-size: 2.2rem;
+        }
+        .internship-card .card-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .internship-card .card-header h3 {
+            font-size: 1.4rem;
+        }
+        .internship-card .card-body ul {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .internship-card .card-footer .btn-apply {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <div aria-label="Government of India banner" class="govt-bar" role="contentinfo">
+      <div class="left">
+        <img alt="Flag of India" src="{{ url_for('static', filename='images/flag-in.png') }}"/>
+        <span>AI BASED PM INTERNSHIP RECOMMENDATION ENGINE</span>
+      </div>
+      <div class="right">
+        <select aria-label="Select language" title="Select language">
+          <option>English</option>
+          <option>Hindi</option>
+          <option>Other</option>
+        </select>
+        <span><i aria-hidden="true" class="fas fa-file-alt"></i> /</span>
+        <div aria-label="Screen reader" class="screen-reader">
+          <i aria-hidden="true" class="fas fa-users"></i>
+        </div>
+      </div>
+    </div>
+    
+    <header aria-label="Main header with logos and buttons" class="main-header" role="banner">
+      <div class="left-logos">
+        <img alt="Ministry of Corporate Affairs Government of India logo" class="govt-logo" src="{{ url_for('static', filename='images/govt-logo.png') }}"/>
+        <p class="interngo-title">INTERNGO</p>
+      </div>
+      <div class="right-buttons">
+        {% if not user %}
+        <a href="{{ url_for('register') }}">
+          <button aria-label="register" class="btn-orange">
+            <i aria-hidden="true" class="fas fa-user-plus"></i> Register
+          </button>
+        </a>
+        <a href="{{ url_for('login') }}">
+          <button aria-label="Login" class="btn-orange">
+            <i aria-hidden="true" class="fas fa-sign-in-alt"></i> Login
+          </button>
+        </a>
+        {% else %}
+        <span class="user-greeting">Welcome, {{ user }}</span>
+        <a href="{{ url_for('logout') }}">
+          <button class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </a>
+        {% endif %}
+      </div>
+    </header>
+    
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a>
+      <a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a>
+      <a href="#"><i class="fas fa-book"></i> Resources</a>
+      <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+      <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </div>
+
+  <section class="recommendations-header">
+    <h1>Your Personalized Internship Recommendations</h1>
+    {% if preferences %}
+    <h3>Based on your profile: {{ preferences.field_of_study }} with skills in {{ preferences.skills|join(', ') }}</h3>
+    {% else %}
+    <h3>Based on your profile, here are the top internships that match your skills and preferences.</h3>
+    {% endif %}
+  </section>
+
+  <section class="internship-list">
+    {% if recommendations %}
+      {% for internship in recommendations %}
+      <div class="internship-card">
+        <div class="card-header">
+          <h3>{{ internship.role }}</h3>
+          <p>{{ internship.company }}</p>
+        </div>
+        <div class="card-body">
+          <p>Similarity Score: {{ (internship.similarity_score * 100)|round(1) }}% match</p>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> {{ internship.location }}</li>
+            {% if internship.duration %}
+            <li><i class="fas fa-clock"></i> Duration: {{ internship.duration }} months</li>
+            {% endif %}
+            {% if internship.stipend %}
+            <li><i class="fas fa-rupee-sign"></i> Stipend: {{ internship.stipend }}</li>
+            {% endif %}
+            {% if internship.skills and internship.skills|length > 0 %}
+            <li><i class="fas fa-code"></i> Skills: {{ internship.skills|join(', ') }}</li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="card-footer">
+          <button class="btn-apply"><i class="fas fa-external-link-alt"></i> Apply Now</button>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="no-recommendations">
+        <h3>No recommendations found. Please try adjusting your preferences.</h3>
+        <p>We couldn't find internships that match your current criteria. Try broadening your skills or location preferences.</p>
+      </div>
+    {% endif %}
+  </section>
+
+  <div class="back-btn-container">
+    <a href="{{ url_for('input_page') }}" class="back-btn"><i class="fas fa-arrow-left"></i> Go Back to Form</a>
+    <a href="{{ url_for('home') }}" class="back-btn" style="margin-left: 15px;"><i class="fas fa-home"></i> Back to Home</a>
+  </div>
+
+  <style>
+    .user-greeting {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #1a3f8a;
+      background: rgba(244, 121, 32, 0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-right: 10px;
+    }
+
+    .logout-btn {
+      background-color: transparent;
+      border: 2px solid #f47920;
+      border-radius: 6px;
+      color: #f47920;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background-color: #f47920;
+      color: white;
+    }
+
+    .no-recommendations {
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .no-recommendations h3 {
+      color: #1a3f8a;
+      margin-bottom: 15px;
+    }
+
+    .no-recommendations p {
+      color: #666;
+    }
+  </style>
+</body>
+</html>

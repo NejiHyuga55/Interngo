@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InternGo - Register</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at 10% 20%, rgb(255, 255, 255) 0%, rgb(240, 240, 240) 90%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .register-container {
+      background: #fff;
+      padding: 45px 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      width: 420px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .register-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .register-container h2 {
+      color: #ff6600;
+      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .register-container input, 
+    .register-container select {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #f9f9f9;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+      -webkit-appearance: none; 
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    .register-container select {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23666" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.61a.5.5 0 0 1 .386-.816h9.916a.5.5 0 0 1 .386.816l-4.796 5.53a.5.5 0 0 1-.772 0z"/></svg>') no-repeat right 15px center;
+      background-size: 12px;
+    }
+
+    .register-container input:focus, 
+    .register-container select:focus {
+      border-color: #002147;
+      background: #fff;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 33, 71, 0.15);
+    }
+    
+    .password-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    .password-container input {
+      padding-right: 45px;
+    }
+    
+    .password-container .toggle-password {
+      position: absolute;
+      right: 15px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 20px;
+      color: #999;
+      transition: color 0.2s;
+    }
+
+    .password-container .toggle-password:hover {
+      color: #333;
+    }
+
+    .register-container button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 25px;
+      background: #ff6600;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .register-container button:hover {
+      background: #e65c00;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,102,0,0.3);
+    }
+
+    .register-container p {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .register-container a {
+      color: #002147;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .register-container a:hover {
+      color: #ff6600;
+      text-decoration: underline;
+    }
+
+    .flash-messages {
+    margin-bottom: 20px;
+    }
+
+    .flash-message {
+        padding: 12px;
+        background: #ffebee;
+        color: #c62828;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        border-left: 4px solid #c62828;
+        font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .register-container {
+        width: 90%;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="register-container">
+    <h2>Create an Account</h2>
+    
+    <!-- Flash messages for feedback -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('register') }}" method="POST">
+      <input type="text" name="fullname" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <div class="password-container">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+      </div>
+      
+      <div class="password-container">
+        <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required>
+          <span class="eye-closed" style="display:none">🔒</span>
+        </button>
+      </div>
+
+      <select name="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="student">Student</option>
+        <option value="mentor">Mentor</option>
+        <option value="organization">Organization</option>
+      </select>
+      
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+  </div>
+
+  <script>
+    document.querySelectorAll('.toggle-password').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const targetId = e.currentTarget.dataset.target;
+        const passwordInput = document.getElementById(targetId);
+        const eyeOpen = e.currentTarget.querySelector('.eye-open');
+        const eyeClosed = e.currentTarget.querySelector('.eye-closed');
+
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          eyeOpen.style.display = 'none';
+          eyeClosed.style.display = 'inline';
+        } else {
+          passwordInput.type = 'password';
+          eyeOpen.style.display = 'inline';
+          eyeClosed.style.display = 'none';
+        }
+      });
+    });
+
+    // Password validation
+    document.querySelector('form').addEventListener('submit', function(e) {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      if (password !== confirmPassword) {
+        e.preventDefault();
+        alert('Passwords do not match!');
+      }
+    });
+  </script>
+
+</body>
+</html>

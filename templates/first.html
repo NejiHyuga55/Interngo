@@ -1,0 +1,1318 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Prime Minister Internship Scheme
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #fff;
+    color: #000;
+    line-height: 1.6;
+  }
+  
+  a { 
+    text-decoration: none; 
+    color: inherit; 
+  }
+  
+  img { 
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+  }
+  
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .top-bar { 
+    background-color: #4a4a4a; 
+    color: #ccc; 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 12px; 
+    display: flex; 
+    align-items: center; 
+    padding: 6px 12px; 
+    gap: 12px; 
+    flex-wrap: nowrap; 
+  }
+  
+  .top-bar .left,
+  .top-bar .center,
+  .top-bar .right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .top-bar .left { 
+    flex: 1 1 auto; 
+  }
+  
+  .top-bar .center { 
+    flex: 2 1 auto; 
+    font-weight: 600; 
+    color: #eee; 
+  }
+  
+  .top-bar .center .interngo { 
+    background: #2f2f2f; 
+    border-radius: 2px; 
+    padding: 0 6px; 
+    margin-right: 6px; 
+    font-weight: 700; 
+    font-size: 13px; 
+    color: #ddd; 
+  }
+  
+  .top-bar .right { 
+    flex: 1 1 auto; 
+    justify-content: flex-end; 
+    font-weight: 600; 
+  }
+  
+  .top-bar .right .app-builder { 
+    background: #222; 
+    border-radius: 2px; 
+    padding: 2px 6px; 
+    font-size: 12px; 
+    color: #ddd; 
+  }
+
+  .govt-bar { 
+    background-color: #000; 
+    color: #fff; 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 14px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 8px 12px; 
+  }
+  
+  .govt-bar .left { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+  }
+  
+  .govt-bar .left img { 
+    width: 24px; 
+    height: 16px; 
+    object-fit: contain; 
+  }
+  
+  .govt-bar .right { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    font-weight: 400; 
+  }
+  
+  .govt-bar .right .thumbs-up { 
+    color: #ff4d4d; 
+    font-size: 18px; 
+  }
+  
+  .govt-bar .right .language-select { 
+    display: flex; 
+    align-items: center; 
+    gap: 4px; 
+    cursor: pointer; 
+  }
+  
+  .govt-bar .right .language-select select { 
+    background: transparent; 
+    border: none; 
+    color: #fff; 
+    font-size: 14px; 
+    font-weight: 400; 
+    cursor: pointer; 
+    padding: 0; 
+    margin: 0; 
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+  }
+  
+  .govt-bar .right .screen-reader { 
+    display: flex; 
+    align-items: center; 
+    gap: 4px; 
+  }
+  
+  .govt-bar .right .screen-reader i { 
+    font-size: 18px; 
+  }
+  
+  .govt-bar .right .font-size-controls { 
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+    font-weight: 600; 
+  }
+  
+  .govt-bar .right .font-size-controls span { 
+    cursor: pointer; 
+    user-select: none; 
+  }
+  header.main-header { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 16px 0; 
+    background: #fff; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+  }
+  
+  .main-header .left-logos { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    flex: 1 1 auto; 
+  }
+  
+  .main-header .left-logos img.govt-logo { 
+    width: 70px; 
+    height: auto; 
+  }
+  
+  .main-header .left-logos img.internship-logo { 
+    width: 140px; 
+    height: auto; 
+  }
+  
+  .interngo-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    color: #1a3f8a; 
+    background: linear-gradient(90deg, #1a3f8a, #f47920);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .main-header .right-buttons { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    flex: 0 0 auto; 
+  }
+  
+  .btn-orange {
+    background-color: #f47920;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 12px 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    box-shadow: 0 4px 0 #c05f18;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-orange:hover,
+  .btn-orange:focus {
+    background-color: #d96a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #c05f18;
+    outline: none;
+  }
+  nav.main-nav { 
+    background: linear-gradient(90deg, #0b2a55, #1a3f8a);
+    color: #fff; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 600; 
+    font-size: 15px; 
+    display: flex; 
+    align-items: center; 
+    gap: 28px; 
+    padding: 12px 20px; 
+    flex-wrap: wrap; 
+    border-radius: 0 0 8px 8px;
+  }
+  
+  nav.main-nav a { 
+    color: #fff; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    white-space: nowrap; 
+    padding: 6px 0;
+    position: relative;
+    transition: all 0.3s;
+  }
+  
+  nav.main-nav a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #f47920;
+    transition: width 0.3s;
+  }
+  
+  nav.main-nav a:hover:after,
+  nav.main-nav a:focus:after { 
+    width: 100%;
+  }
+  
+  nav.main-nav a:hover,
+  nav.main-nav a:focus { 
+    color: #f8b070;
+    outline: none; 
+  }
+  
+  nav.main-nav a .fa-home,
+  nav.main-nav a .fa-file-alt,
+  nav.main-nav a .fa-video,
+  nav.main-nav a .fa-thumbs-up,
+  nav.main-nav a .fa-mobile-alt,
+  nav.main-nav a .fa-headphones,
+  nav.main-nav a .fa-book {
+    font-size: 16px;
+  }
+  
+  nav.main-nav .dropdown {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  nav.main-nav .dropdown > span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 0;
+  }
+  
+  nav.main-nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0b2a55;
+    min-width: 180px;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  
+  nav.main-nav .dropdown:hover .dropdown-content,
+  nav.main-nav .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+  
+  nav.main-nav .dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  nav.main-nav .dropdown-content a:hover,
+  nav.main-nav .dropdown-content a:focus {
+    background-color: #08406a;
+    padding-left: 20px;
+    outline: none;
+  }
+
+  .alert-banner {
+    background: linear-gradient(90deg, #fff7d6, #fff0b3);
+    color: #1a4a8a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    border-left: 4px solid #f47920;
+  }
+  
+  .alert-banner strong {
+    display: inline-block;
+    animation: scroll-text 20s linear infinite;
+    padding-left: 100%;
+  }
+  
+  @keyframes scroll-text { 
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  .hero {
+    background: linear-gradient(135deg, #f47920 0%, #ff9933 100%);
+    border-radius: 0 0 40px 40px;
+    margin: 16px 0 32px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 60px 40px;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(244, 121, 32, 0.2);
+  }
+  
+  .hero-left {
+    flex: 1 1 400px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 3;
+  }
+  
+  .hero-left small {
+    font-weight: 500;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .hero-left h1 {
+    font-weight: 900;
+    font-size: 58px;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hero-left .highlight-text {
+    background-color: rgba(26, 63, 138, 0.9);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .hero-left .highlight-text em {
+    font-weight: 700;
+  }
+  
+  .hero-left p {
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0 0 28px 0;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  
+  .hero-left button {
+    background-color: #1a3f8a;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 0 #0f2a5a;
+    transition: all 0.3s ease;
+  }
+  
+  .hero-left button:hover,
+  .hero-left button:focus {
+    background-color: #0f2a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #0a1e42;
+    outline: none;
+  }
+  
+  .hero-left button i {
+    font-size: 18px;
+  }
+  
+  .hero-right {
+    flex: 1 1 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+  }
+  
+  .hero-right img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: perspective(800px) rotateY(-5deg) rotateX(5deg);
+    transition: transform 0.5s ease;
+  }
+  
+  .hero-right img:hover {
+    transform: perspective(800px) rotateY(0) rotateX(0);
+  }
+  
+  .hero-bg-rupee {
+    position: absolute;
+    top: 20px;
+    right: 20%;
+    width: 180px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    filter: blur(4px);
+    z-index: 1;
+    pointer-events: none;
+    transform: rotate(15deg);
+  }
+  
+  .hero-bg-idcard {
+    position: absolute;
+    bottom: 30px;
+    left: 10%;
+    width: 180px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    filter: blur(3px);
+    z-index: 1;
+    pointer-events: none;
+    transform: rotate(-10deg);
+  }
+  
+  .hero-bg-circle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    bottom: -50px;
+    right: -50px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  section.info-section {
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+  }
+  
+  section.info-section:nth-child(odd) {
+    background: #f8f9fa;
+  }
+  
+  section.info-section:nth-child(even) {
+    background: #fff;
+  }
+  
+  section.info-section h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #1a3f8a;
+    position: relative;
+    display: inline-block;
+  }
+  
+  section.info-section h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #f47920;
+    border-radius: 2px;
+  }
+  
+  section.info-section > p {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .feature-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid #f47920;
+  }
+  
+  .feature-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to bottom, rgba(244, 121, 32, 0.1), transparent);
+    transition: height 0.5s ease;
+    z-index: 0;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+  }
+  
+  .feature-card:hover:before {
+    height: 100%;
+  }
+  
+  .feature-card i {
+    font-size: 42px;
+    color: #f47920;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .feature-card h3 {
+    font-size: 22px;
+    margin: 15px 0;
+    color: #1a3f8a;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .feature-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+  }
+  .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #f47920;
+        }
+        
+        .modal-title {
+            color: #1a3f8a;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f47920;
+        }
+        
+        .eligibility-list {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+        
+        .eligibility-list li {
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #f47920;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .eligibility-list li i {
+            margin-right: 12px;
+            color: #f47920;
+            font-size: 18px;
+        }
+        
+        .modal-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .modal-btn {
+            background-color: #f47920;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .modal-btn:hover {
+            background-color: #e06c17;
+        }
+
+  footer {
+    background: linear-gradient(90deg, #0b2a55, #1a3f8a);
+    color: #fff;
+    padding: 50px 0 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .footer-column h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #f47920;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 12px;
+  }
+  
+  .footer-column ul li a {
+    color: #ccc;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  
+  .footer-column ul li a:hover {
+    color: #f47920;
+    transform: translateX(5px);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    color: #aaa;
+  }
+  .user-greeting {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1a3f8a;
+    background: rgba(244, 121, 32, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+
+  .logout-btn {
+      background-color: transparent;
+      border: 2px solid #f47920;
+      border-radius: 6px;
+      color: #f47920;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+  }
+
+  .logout-btn:hover {
+      background-color: #f47920;
+      color: white;
+  }
+
+  .no-recommendations {
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .no-recommendations h3 {
+      color: #1a3f8a;
+      margin-bottom: 15px;
+  }
+
+  .no-recommendations p {
+      color: #666;
+  }
+
+  @media (max-width: 1100px) {
+    .hero-left h1 {
+      font-size: 48px;
+    }
+    
+    .hero-left .highlight-text {
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      padding: 40px 24px;
+      border-radius: 0 0 24px 24px;
+      text-align: center;
+    }
+    
+    .hero-left {
+      text-align: center;
+    }
+    
+    .hero-left h1 {
+      font-size: 40px;
+    }
+    
+    .hero-left small {
+      font-size: 16px;
+    }
+    
+    .hero-left .highlight-text {
+      font-size: 16px;
+    }
+    
+    .hero-left p {
+      font-size: 15px;
+    }
+    
+    .hero-right {
+      margin-top: 30px;
+    }
+    
+    .hero-right img {
+      max-width: 320px;
+      border-radius: 16px;
+    }
+    
+    .hero-bg-rupee,
+    .hero-bg-idcard {
+      display: none;
+    }
+    
+    section.info-section h2 {
+      font-size: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .top-bar,
+    .govt-bar,
+    nav.main-nav {
+      font-size: 12px;
+      padding: 6px 10px;
+      gap: 8px;
+    }
+    
+    .govt-bar .right {
+      gap: 8px;
+      font-size: 12px;
+    }
+    
+    .main-header {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+    
+    .main-header .right-buttons {
+      width: 100%;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .btn-orange {
+      font-size: 14px;
+      padding: 10px 18px;
+    }
+    
+    nav.main-nav {
+      justify-content: center;
+      gap: 16px;
+      padding: 10px;
+    }
+    
+    .hero-left h1 {
+      font-size: 32px;
+    }
+    
+    .hero-left small,
+    .hero-left .highlight-text {
+      font-size: 15px;
+    }
+    
+    .hero-left p {
+      font-size: 14px;
+    }
+    
+    .hero-left button {
+      font-size: 14px;
+      padding: 12px 22px;
+      margin: 0 auto;
+    }
+    
+    section.info-section {
+      padding: 60px 0;
+    }
+    
+    section.info-section h2 {
+      font-size: 28px;
+    }
+    
+    section.info-section > p {
+      font-size: 16px;
+    }
+
+    .user-greeting {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1a3f8a;
+    background: rgba(244, 121, 32, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-right: 10px;
+    }
+
+    .logout-btn {
+        background-color: transparent;
+        border: 2px solid #f47920;
+        border-radius: 6px;
+        color: #f47920;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 8px 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .logout-btn:hover {
+        background-color: #f47920;
+        color: white;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-left h1 {
+      font-size: 28px;
+    }
+    
+    .hero-left button {
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .footer-column h3:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  </style>
+ </head>
+ <body>
+  
+  <div class="container">
+    <div aria-label="Government of India banner" class="govt-bar" role="contentinfo">
+     <div class="left">
+      <img alt="Flag of India" src="https://flagcdn.com/w20/in.png"/>
+      <span>
+       AI BASED PM INTERNSHIP RECOMMENDATION ENGINE
+      </span>
+     </div>
+     <div class="right">
+      <select aria-label="Select language" title="Select language">
+       <option>
+        English
+       </option>
+       <option>
+        Hindi
+       </option>
+       <option>
+        Other
+       </option>
+      </select>
+      <i aria-hidden="true" class="fas fa-file-alt">
+      </i>
+      <span>
+       /
+      </span>
+      <div aria-label="Screen reader" class="screen-reader">
+       <i aria-hidden="true" class="fas fa-users">
+       </i>
+      </div>
+     </div>
+    </div>
+    
+    <header aria-label="Main header with logos and buttons" class="main-header" role="banner">
+     <div class="left-logos">
+      <img alt="Ministry of Corporate Affairs Government of India logo" class="govt-logo" height="100" src="{{ url_for('static', filename='images/govt-logo.png') }}" width="80"/>
+      <p class="interngo-title">INTERNGO</p>
+      {% if Username %}
+      <div class="user-greeting">
+        <i class="fas fa-user"></i>
+        Hello, {{ Username }}
+      </div>
+      {% endif %}
+     </div>
+     <div class="right-buttons">
+      {% if not Username %}
+      <a href="{{ url_for('register') }}">
+        <button aria-label="register" class="btn-orange">
+          <i aria-hidden="true" class="fas fa-user-circle"></i> Register
+        </button>
+      </a>
+      <a href="{{ url_for('login') }}">
+        <button aria-label="Login" class="btn-orange">
+          <i aria-hidden="true" class="fas fa-user-circle"></i> Login
+        </button>
+      </a>
+      {% else %}
+      <button aria-label="Profile" class="btn-orange" style="opacity: 0.7; cursor: default;">
+        <i aria-hidden="true" class="fas fa-user"></i> Profile
+      </button>
+      <a href="{{ url_for('logout') }}">
+        <button class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </a>
+      {% endif %}
+     </div>
+    </header>
+    
+    <nav aria-label="Primary navigation" class="main-nav" role="navigation">
+     <a aria-current="page" href="{{ url_for('home') }}">
+      <i aria-hidden="true" class="fas fa-home">
+      </i>
+      HOME
+     </a>
+     <a href="#how-it-works-section">
+      <i aria-hidden="true" class="fas fa-file-alt"></i>
+      HOW IT WORKS
+     </a>
+     <a href="#" id="eligibility-link">
+      <i aria-hidden="true" class="fas fa-thumbs-up"></i>
+      ELIGIBILITY
+     </a>
+    
+     <div aria-expanded="false" aria-haspopup="true" aria-label="Support dropdown" class="dropdown" tabindex="0">
+      <span>
+       <i aria-hidden="true" class="fas fa-headphones">
+       </i>
+       SUPPORT
+       <i aria-hidden="true" class="fas fa-caret-down">
+       </i>
+      </span>
+      <div aria-label="Support submenu" class="dropdown-content" role="menu">
+       <a href="#" role="menuitem">
+        FAQ
+       </a>
+       <a href="#" role="menuitem">
+        Contact
+       </a>
+      </div>
+     </div>
+    </nav>
+    
+    <div class="modal" id="eligibility-modal">
+      <div class="modal-content">
+          <span class="close-modal" id="close-modal">&times;</span>
+          <h2 class="modal-title">Eligibility Criteria</h2>
+          <p>To participate in the Prime Minister Internship Scheme, applicants must meet the following criteria:</p>
+          
+          <ul class="eligibility-list">
+              <li>
+                  <i class="fas fa-graduation-cap"></i>
+                  <span>Currently enrolled in a recognized university or recently graduated (within last 2 years)</span>
+              </li>
+              <li>
+                  <i class="fas fa-birthday-cake"></i>
+                  <span>Between 18 to 25 years of age</span>
+              </li>
+              <li>
+                  <i class="fas fa-percentage"></i>
+                  <span>Minimum 60% marks or equivalent CGPA in last qualifying examination</span>
+              </li>
+              <li>
+                  <i class="fas fa-passport"></i>
+                  <span>Indian citizenship with valid government ID proof</span>
+              </li>
+              <li>
+                  <i class="fas fa-file-alt"></i>
+                  <span>No prior criminal record or ongoing legal proceedings</span>
+              </li>
+          </ul>
+          
+          <div class="modal-footer">
+              <button class="modal-btn" id="modal-close-btn">Got It</button>
+          </div>
+      </div>
+    </div>
+    
+    <div aria-live="polite" class="alert-banner" role="alert">
+     <strong>
+      Ongoing! Check your dashboard, email, and SMS regularly. Confirm joining via the Internship tile on your dashboard. 
+     </strong>
+    </div>
+    
+    <section aria-label="Seed your Bank Account with Aadhaar to Receive Financial Assistance" class="hero">
+     <div class="hero-left">
+      <small>
+      🚀 Start Your Journey
+      </small>
+      <h1>
+      Find Your Perfect Internship
+      </h1>
+      <div class="highlight-text">
+       <em>
+        with
+        <strong>
+          AI-Powered
+        </strong>
+        <strong>
+          Smart Recommendations
+        </strong>
+       </em>
+      </div>
+      <p>
+       Discover internships tailored to your skills, interests, and location preferences. No more endless scrolling—get personalized suggestions instantly and take the first step towards your career success with confidence.
+      </p>
+      <a href="{{ url_for('input_page') }}">
+          <button aria-label="Get Started">
+              <i aria-hidden="true" class="fas fa-rocket"></i>
+              Get Started
+          </button>
+      </a>
+     </div>
+     <div aria-hidden="true" class="hero-right">
+      <div aria-hidden="true" class="hero-bg-rupee">
+      </div>
+      <div aria-hidden="true" class="hero-bg-idcard">
+      </div>
+      <div aria-hidden="true" class="hero-bg-circle">
+      </div>
+      <img alt="Image of Prime Minister Narendra Modi wearing vest and white shirt" src="{{ url_for('static', filename='images/pm-image.png') }}"/>
+     </div>
+    </section>
+    
+    <!-- Rest of your HTML content remains the same -->
+    <section id="how-it-works-section" class="info-section">
+      <h2>How It Works</h2>
+      <p>Our AI-powered system simplifies the internship process in just 3 steps:</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-user-edit"></i>
+          <h3>1. Enter Your Details</h3>
+          <p>Provide your skills, interests, and preferences with a simple form.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-brain"></i>
+          <h3>2. AI Smart Match</h3>
+          <p>Our algorithm analyzes and finds internships best suited for you.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-briefcase"></i>
+          <h3>3. Apply & Start</h3>
+          <p>View recommended opportunities and apply instantly to start your journey.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ... Rest of your HTML remains unchanged ... -->
+    
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>About Us</h3>
+            <ul>
+              <li><a href="{{url_for('about')}}">About PM Internship</a></li>
+              <li><a href="#">Our Mission</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Partners</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">How to Apply</a></li>
+              <li><a href="#">Eligibility Criteria</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Success Stories</a></li>
+              <li><a href="#">Webinars</a></li>
+              <li><a href="#">Download App</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Connect With Us</h3>
+            <ul>
+              <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+              <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Prime Minister Internship Scheme. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('eligibility-modal');
+            const eligibilityLink = document.getElementById('eligibility-link');
+            const closeModal = document.getElementById('close-modal');
+            const closeBtn = document.getElementById('modal-close-btn');
+            
+            eligibilityLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; 
+            });
+            
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; 
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = ''; 
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = ''; 
+                }
+            });
+        });
+    </script>
+</body>
+</html>
