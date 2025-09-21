@@ -8,12 +8,16 @@ import numpy as np
 
 import os
 from dotenv import load_dotenv
+import helper  # Import helper.py
 
 load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "fallback_secret_key")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///users.sqlite3')
+
+# Use Render's writable directory for SQLite
+DB_PATH = os.environ.get('DATABASE_URL', 'sqlite:///instance/users.sqlite3')
+app.config['SQLALCHEMY_DATABASE_URI'] = DB_PATH
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.permanent_session_lifetime = timedelta(hours=1)
 
@@ -197,9 +201,13 @@ def output():
         flash("Please complete the input form first", "info")
         return redirect(url_for("input_page"))
     
-    # Get recommendations based on stored preferences
+    # Get recommendations using helper.py
     recommendations = []
-    if recommender:
+    if hasattr(helper, "LightweightRecommender"):
+        skills = session["user_preferences"].get("skills", [])
+        recommender = helper.LightweightRecommender()
+        recommendations = recommender.recommend_by_skills(skills, top_n=5)
+    elif recommender:
         skills = session["user_preferences"].get("skills", [])
         recommendations = recommender.recommend_by_skills(skills, top_n=5)
     
@@ -237,4 +245,7 @@ def logout():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    # For local development, run Flask server
+    if os.environ.get("RENDER") != "true":
+        app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
+    # For Render, Gunicorn will serve the app using Procfile

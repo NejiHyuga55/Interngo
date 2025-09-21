@@ -1,0 +1,27 @@
+{
+  "experiments": {
+    "recommendation_style": {
+      "variants": {
+        "baseline": {
+          "description": "Basic skill-based recommendations",
+          "top_n": 5
+        },
+        "diverse": {
+          "description": "Diversity-enhanced recommendations",
+          "top_n": 5,
+          "diversity_factor": 0.4
+        },
+        "hybrid": {
+          "description": "Hybrid recommendations with filters",
+          "top_n": 5,
+          "min_stipend": 5000,
+          "max_duration": 6
+        }
+      },
+      "results": {},
+      "start_time": "2025-09-21T11:42:16.601774"
+    }
+  },
+  "framework_version": "1.0",
+  "created_at": "2025-09-21T11:42:16.602086"
+}
