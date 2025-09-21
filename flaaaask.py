@@ -2,19 +2,15 @@ from flask import Flask, redirect, url_for, render_template, request, session, f
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 import joblib
-import pandas as pd
-import json
-import numpy as np
-
 import os
 from dotenv import load_dotenv
 import helper  # Import helper.py
+import json
 
 load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "fallback_secret_key")
-
 # Use Render's writable directory for SQLite
 DB_PATH = os.environ.get('DATABASE_URL', 'sqlite:///instance/users.sqlite3')
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_PATH
