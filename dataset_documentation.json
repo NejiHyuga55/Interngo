@@ -1,7 +1,7 @@
 {
   "overview": {
     "dataset_name": "Processed Internship Data",
-    "processing_date": "2025-09-21 16:24:04",
+    "processing_date": "2025-09-21 17:32:34",
     "total_records": 6642,
     "total_features": 30,
     "data_quality_score": 83.89691859881562
@@ -203,147 +203,361 @@
     "completeness_rate": 0.8389691859881562,
     "column_analysis": {
       "Internship Id": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "int64"
       },
       "Role": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Company Name": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Location": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Duration": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "int64"
       },
       "Stipend": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Intern Type": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Skills": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Perks": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Hiring Since": {
+        "null_count": 2,
+        "completeness_rate": 0.9996988858777477,
         "data_type": "object"
       },
       "Opportunity Date": {
+        "null_count": 1,
+        "completeness_rate": 0.9998494429388738,
         "data_type": "object"
       },
       "Opening": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "int64"
       },
       "Hired Candidate": {
+        "null_count": 3154,
+        "completeness_rate": 0.5251430292080699,
         "data_type": "object"
       },
       "Number of Applications": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "float64"
       },
       "Website Link": {
+        "null_count": 2330,
+        "completeness_rate": 0.6492020475760314,
         "data_type": "object"
       },
       "Stipend Amount": {
+        "null_count": 32,
+        "completeness_rate": 0.9951821740439627,
         "data_type": "float64"
       },
       "Stipend Currency": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Has Skills": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "bool"
       },
       "Has Perks": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "bool"
       },
       "Stipend Specified": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "bool"
       },
       "City": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Country": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Duration Category": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Application Volume": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "object"
       },
       "Posting Date": {
+        "null_count": 6642,
+        "completeness_rate": 0.0,
         "data_type": "datetime64[ns]"
       },
       "Posting Month": {
+        "null_count": 6642,
+        "completeness_rate": 0.0,
         "data_type": "float64"
       },
       "Posting Year": {
+        "null_count": 6642,
+        "completeness_rate": 0.0,
         "data_type": "float64"
       },
       "Days Since Posted": {
+        "null_count": 6642,
+        "completeness_rate": 0.0,
         "data_type": "float64"
       },
       "Number of Skills": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "int64"
       },
       "Number of Perks": {
+        "null_count": 0,
+        "completeness_rate": 1.0,
         "data_type": "int64"
       }
     },
     "categorical_analysis": {
       "Role": {
+        "unique_values": 1681,
+        "sample_values": [
+          "Business Development (Sales) Internship",
+          "Human Resources (HR) Internship",
+          "Content & E-Commerce Management Internship"
+        ],
         "is_list_column": false
       },
       "Company Name": {
+        "unique_values": 4757,
+        "sample_values": [
+          "Madbrains Technologies LLP",
+          "Jobs Flash Consulting Services",
+          "Fall For Flora"
+        ],
         "is_list_column": false
       },
       "Location": {
+        "unique_values": 990,
+        "sample_values": [
+          "('Chandigarh, Mohali',)",
+          "('Gurgaon',)",
+          "('Faridabad, Delhi, Gurgaon, Noida',)"
+        ],
+        "is_list_column": false
+      },
+      "Stipend": {
+        "unique_values": 392,
+        "sample_values": [
+          "\u20b9 5,000-12,000 /month",
+          "\u20b9 8,000 /month",
+          "\u20b9 7,000 /month"
+        ],
+        "is_list_column": false
+      },
+      "Intern Type": {
+        "unique_values": 8,
+        "sample_values": [
+          "['Internship with job offer']",
+          "['Internship']",
+          "['Internship with job offer', 'Internship with job offer', 'Internship with job offer']"
+        ],
+        "is_list_column": false
+      },
+      "Skills": {
+        "unique_list_lengths": 21,
+        "sample_first_list": [
+          "Content Writing",
+          "Digital Marketing",
+          "Email Marketing"
+        ],
+        "is_list_column": true
+      },
+      "Perks": {
+        "unique_list_lengths": 8,
+        "sample_first_list": [
+          "Certificate",
+          "Letter of recommendation",
+          "Job offer"
+        ],
+        "is_list_column": true
+      },
+      "Hiring Since": {
+        "unique_values": 123,
+        "sample_values": [
+          "Hiring since March 2023",
+          "Hiring since September 2021",
+          "Hiring since April 2023"
+        ],
+        "is_list_column": false
+      },
+      "Opportunity Date": {
+        "unique_values": 358,
+        "sample_values": [
+          "4 opportunities posted",
+          "19 opportunities posted",
+          "15 opportunities posted"
+        ],
+        "is_list_column": false
+      },
+      "Hired Candidate": {
+        "unique_values": 215,
+        "sample_values": [
+          "88 candidates hired",
+          "43 candidates hired",
+          "6 candidates hired"
+        ],
+        "is_list_column": false
+      },
+      "Website Link": {
+        "unique_values": 3267,
+        "sample_values": [
+          "https://www.linkedin.com/company/madbrains-technologies-llp/",
+          "http://jobsflash.in",
+          "http://fallforflora.com/"
+        ],
+        "is_list_column": false
+      },
+      "Stipend Currency": {
+        "unique_values": 8,
+        "sample_values": [
+          "INR",
+          "Unpaid",
+          "Performance-based"
+        ],
+        "is_list_column": false
+      },
+      "City": {
+        "unique_values": 207,
+        "sample_values": [
+          "('Chandigarh",
+          "('Gurgaon'",
+          "('Faridabad"
+        ],
+        "is_list_column": false
+      },
+      "Country": {
+        "unique_values": 75,
+        "sample_values": [
+          ")",
+          "'Ranchi')",
+          "Himachal Pradesh')"
+        ],
+        "is_list_column": false
+      },
+      "Duration Category": {
+        "unique_values": 4,
+        "sample_values": [
+          "Medium-term (3-4 months)",
+          "Long-term (5-6 months)",
+          "Short-term (1-2 months)"
+        ],
+        "is_list_column": false
+      },
+      "Application Volume": {
+        "unique_values": 1,
+        "sample_values": [
+          "Early Applicant"
+        ],
         "is_list_column": false
       }
     }
   },
   "validation_results": {
     "Role_null_check": {
+      "passed": true,
+      "null_count": 0,
       "message": "Role has 0 null values"
     },
     "Company Name_null_check": {
+      "passed": true,
+      "null_count": 0,
       "message": "Company Name has 0 null values"
     },
     "Duration_null_check": {
+      "passed": true,
+      "null_count": 0,
       "message": "Duration has 0 null values"
     },
     "Duration_range_check": {
+      "passed": false,
+      "invalid_count": 6,
       "message": "Duration has 6 values outside range [1, 24]"
     },
     "Number of Applications_range_check": {
+      "passed": true,
+      "invalid_count": 0,
       "message": "Number of Applications has 0 values outside range [0, 10000]"
     },
     "Stipend Amount_range_check": {
+      "passed": true,
+      "invalid_count": 0,
       "message": "Stipend Amount has 0 values outside range [0, 100000]"
     },
     "Duration_dtype_check": {
+      "passed": true,
       "message": "Duration is numeric"
     },
     "Number of Applications_dtype_check": {
+      "passed": true,
       "message": "Number of Applications is numeric"
     },
     "Stipend Amount_dtype_check": {
+      "passed": true,
       "message": "Stipend Amount is numeric"
     },
     "Skills_list_check": {
+      "passed": true,
       "message": "Skills contains valid lists"
     },
     "Perks_list_check": {
+      "passed": true,
       "message": "Perks contains valid lists"
     },
     "duplicate_check": {
+      "passed": false,
+      "duplicate_count": 172,
       "message": "Found 172 duplicate Role-Company pairs"
     },
     "stipend_consistency_check": {
-      "message": "Found 0 records with stipend amount but no currency"
+      "passed": false,
+      "inconsistent_count": 50,
+      "message": "Found 50 records with stipend amount but no currency"
     }
   }
 }

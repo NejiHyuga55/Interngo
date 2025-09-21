@@ -1,196 +1,6 @@
 import pandas as pd
 import numpy as np
 import ast
-
-# Load the data
-df = pd.read_csv('internship_data.csv')
-
-# Check missing values
-print("Missing values before handling:")
-print(df.isnull().sum())
-
-# Handle missing values
-def handle_missing_values(df):
-
-
-     # Convert to numeric, handling any non-numeric values
-    df['Duration'] = pd.to_numeric(df['Duration'], errors='coerce')
-    
-    # Count non-null values
-    non_null_count = df['Duration'].notna().sum()
-    
-    if non_null_count > 0:
-        # Try median first
-        try:
-            median_val = df['Duration'].median()
-            if not pd.isna(median_val):
-                df['Duration'] = df['Duration'].fillna(median_val)
-            else:
-                # If median is NaN, try mean
-                mean_val = df['Duration'].mean()
-                df['Duration'] = df['Duration'].fillna(mean_val)
-        except:
-            # If any error occurs, use mean
-            mean_val = df['Duration'].mean()
-            df['Duration'] = df['Duration'].fillna(mean_val)
-    else:
-        # If all values are missing, fill with 0 or appropriate default
-        df['Duration'] = df['Duration'].fillna(0)
-    
-    return df
-
-# Main execution
-if __name__ == "__main__":
-    try:
-        # Load your data here
-        # df = pd.read_csv('your_data.csv')
-        
-        # Test data
-        df = pd.DataFrame({
-            'Duration': [10, 20, None, 'invalid', 40, None],
-            'Other_Column': [1, 2, 3, 4, 5, 6]
-        })
-        
-        print("Before processing:")
-        print(df)
-        print(f"Data types: {df['Duration'].dtype}")
-        
-        # Process the data
-        df = handle_missing_values(df)
-        
-        print("\nAfter processing:")
-        print(df)
-        print(f"Data types: {df['Duration'].dtype}")
-        
-    except Exception as e:
-        print(f"Error occurred: {e}")
-        print("Please check your data and try again")
-
-
-    
-    # Fill missing Skills with empty lists
-    df['Skills'] = df['Skills'].fillna('[]')
-    
-    # Fill missing Perks with empty lists
-    df['Perks'] = df['Perks'].fillna('[]')
-    
-    # Fill missing Location with 'Not specified'
-    df['Location'] = df['Location'].fillna('Not specified')
-    
-    # Fill missing Stipend with 'Unspecified'
-    df['Stipend'] = df['Stipend'].fillna('Unspecified')
-    
-    # # Fill numeric columns with appropriate defaults
-    # df['Duration'] = df['Duration'].fillna(df['Duration'].median())
-    
-    # Fill applications with 0 for "Be an early applicant" or missing
-    df['Number of Applications'] = df['Number of Applications'].replace('Be an early applicant', 0)
-    df['Number of Applications'] = pd.to_numeric(df['Number of Applications'], errors='coerce').fillna(0)
-    
-    
-
-df = handle_missing_values(df)
-print("\nMissing values after handling:")
-print(df.isnull().sum())
-
-import re
-
-def clean_and_standardize(df):
-    # Clean Location column
-    def extract_locations(loc_str):
-        if pd.isna(loc_str) or loc_str == 'Not specified':
-            return []
-        # Remove parentheses and quotes
-        loc_str = re.sub(r"[()']", "", str(loc_str))
-        # Split by commas and strip whitespace
-        locations = [loc.strip() for loc in loc_str.split(',')]
-        # Remove empty strings
-        return [loc for loc in locations if loc]
-    
-    df['Location'] = df['Location'].apply(extract_locations)
-    
-    # Clean Skills column (convert string representation to list)
-    def parse_list_string(list_str):
-        try:
-            if pd.isna(list_str):
-                return []
-            # Handle both string representations and actual strings
-            if isinstance(list_str, str) and list_str.startswith('['):
-                return ast.literal_eval(list_str)
-            elif isinstance(list_str, str):
-                return [skill.strip() for skill in list_str.split(',')]
-            else:
-                return []
-        except:
-            return []
-    
-    df['Skills'] = df['Skills'].apply(parse_list_string)
-    
-    # Clean Perks column
-    df['Perks'] = df['Perks'].apply(parse_list_string)
-    
-    # Clean and convert Stipend to numeric values
-    def parse_stipend(stipend_str):
-        if pd.isna(stipend_str) or stipend_str == 'Unspecified':
-            return np.nan, np.nan
-        
-        # Handle different formats
-        if 'Unpaid' in str(stipend_str):
-            return 0, 0
-        if 'Performance Based' in str(stipend_str) or 'Incentives' in str(stipend_str):
-            return np.nan, np.nan  # Or handle separately
-        
-        # Extract numbers using regex
-        numbers = re.findall(r'[\d,]+', str(stipend_str))
-        numbers = [float(num.replace(',', '')) for num in numbers]
-        
-        if len(numbers) == 1:
-            return numbers[0], numbers[0]  # Single value
-        elif len(numbers) >= 2:
-            return min(numbers), max(numbers)  # Range
-        else:
-            return np.nan, np.nan
-    
-    df[['Stipend_Min', 'Stipend_Max']] = df['Stipend'].apply(
-        lambda x: pd.Series(parse_stipend(x))
-    )
-    
-    # Clean Duration (extract numeric part)
-    def parse_duration(duration_str):
-        if pd.isna(duration_str):
-            return np.nan
-        # Extract numbers
-        numbers = re.findall(r'\d+', str(duration_str))
-        if numbers:
-            return int(numbers[0])
-        return np.nan
-    
-    df['Duration_Months'] = df['Duration'].apply(parse_duration)
-    
-    # Clean Intern Type
-    def clean_intern_type(intern_type):
-        if pd.isna(intern_type):
-            return 'Not specified'
-        if isinstance(intern_type, str) and intern_type.startswith('['):
-            try:
-                types = ast.literal_eval(intern_type)
-                return types[0] if types else 'Not specified'
-            except:
-                return 'Not specified'
-        return str(intern_type)
-    
-    df['Intern_Type_Clean'] = df['Intern Type'].apply(clean_intern_type)
-    
-    return df
-
-df = clean_and_standardize(df)
-
-# Display cleaned data sample
-print("\nCleaned data sample:")
-print(df[['Role', 'Location', 'Skills', 'Stipend_Min', 'Stipend_Max', 'Duration_Months']].head())
-import pandas as pd
-import numpy as np
-import ast
 import json
 from datetime import datetime
 
@@ -1709,50 +1519,78 @@ class LightweightAPI:
 
 
 # Helper functions for CLI interface
+# def display_recommendations(result):
+#     if result['status'] == 'success':
+#         print(f"\nFound {result['count']} recommendations:")
+#         for i, rec in enumerate(result['recommendations'], 1):
+#             print(f"{i}. {rec['role']} at {rec['company']}")
+#             print(f"   Score: {rec['similarity_score']:.3f} | Stipend: {rec['stipend_amount'] or 'N/A'}")
+#             print(f"   Location: {rec['location']} | Duration: {rec['duration'] or 'N/A'} months")
+#             print()
+#     else:
+#         print(f"Error: {result.get('error', 'Unknown error')}")
+
+# def display_search_results(result):
+#     if result['status'] == 'success':
+#         print(f"\nFound {result['count']} results:")
+#         for i, rec in enumerate(result['results'], 1):
+#             print(f"{i}. {rec['role']} at {rec['company']}")
+#             print(f"   Match score: {rec['match_score']} | Stipend: {rec['stipend_amount'] or 'N/A'}")
+#             print(f"   Location: {rec['location']}")
+#             print()
+#     else:
+#         print(f"Error: {result.get('error', 'Unknown error')}")
+
+# def display_details(result):
+#     if result['status'] == 'success':
+#         internship = result['internship']
+#         print(f"\nInternship Details:")
+#         print(f"Role: {internship['role']}")
+#         print(f"Company: {internship['company']}")
+#         print(f"Location: {internship['location']}")
+#         print(f"Duration: {internship['duration'] or 'N/A'} months")
+#         print(f"Stipend: {internship['stipend_amount'] or 'N/A'}")
+#         print(f"Type: {internship['intern_type'] or 'N/A'}")
+#         print(f"Skills: {', '.join(internship['skills'][:5])}{'...' if len(internship['skills']) > 5 else ''}")
+#     else:
+#         print(f"Error: {result.get('error', 'Internship not found')}")
+
+# def display_stats(result):
+#     if result['status'] == 'success':
+#         stats = result['stats']
+#         print(f"\nSystem Statistics:")
+#         print(f"Total internships: {stats['total_internships']:,}")
+#         print(f"Total companies: {stats['total_companies']:,}")
+#         print(f"Average stipend: ₹{stats['average_stipend']:,.0f}")
+#         print(f"Average duration: {stats['average_duration']:.1f} months")
+#     else:
+#         print(f"Error: {result.get('error', 'Unknown error')}")
+
 def display_recommendations(result):
     if result['status'] == 'success':
         print(f"\nFound {result['count']} recommendations:")
         for i, rec in enumerate(result['recommendations'], 1):
             print(f"{i}. {rec['role']} at {rec['company']}")
-            print(f"   Score: {rec['similarity_score']:.3f} | Stipend: {rec['stipend_amount'] or 'N/A'}")
-            print(f"   Location: {rec['location']} | Duration: {rec['duration'] or 'N/A'} months")
-            print()
-    else:
-        print(f"Error: {result.get('error', 'Unknown error')}")
-
-def display_search_results(result):
-    if result['status'] == 'success':
-        print(f"\nFound {result['count']} results:")
-        for i, rec in enumerate(result['results'], 1):
-            print(f"{i}. {rec['role']} at {rec['company']}")
-            print(f"   Match score: {rec['match_score']} | Stipend: {rec['stipend_amount'] or 'N/A'}")
+            print(f"   Score: {rec['similarity_score']:.3f}")
+            print(f"   Stipend: ₹{rec['stipend_amount']:,.0f}" if rec['stipend_amount'] else "   Stipend: N/A")
             print(f"   Location: {rec['location']}")
-            print()
-    else:
-        print(f"Error: {result.get('error', 'Unknown error')}")
-
-def display_details(result):
-    if result['status'] == 'success':
-        internship = result['internship']
-        print(f"\nInternship Details:")
-        print(f"Role: {internship['role']}")
-        print(f"Company: {internship['company']}")
-        print(f"Location: {internship['location']}")
-        print(f"Duration: {internship['duration'] or 'N/A'} months")
-        print(f"Stipend: {internship['stipend_amount'] or 'N/A'}")
-        print(f"Type: {internship['intern_type'] or 'N/A'}")
-        print(f"Skills: {', '.join(internship['skills'][:5])}{'...' if len(internship['skills']) > 5 else ''}")
-    else:
-        print(f"Error: {result.get('error', 'Internship not found')}")
-
-def display_stats(result):
-    if result['status'] == 'success':
-        stats = result['stats']
-        print(f"\nSystem Statistics:")
-        print(f"Total internships: {stats['total_internships']:,}")
-        print(f"Total companies: {stats['total_companies']:,}")
-        print(f"Average stipend: ₹{stats['average_stipend']:,.0f}")
-        print(f"Average duration: {stats['average_duration']:.1f} months")
+            print(f"   Duration: {rec['duration']} months" if rec['duration'] else "   Duration: N/A")
+            
+            # Get complete details
+            details = recommender.get_internship_details(rec['internship_id'])
+            if details:
+                print(f"   Type: {details.get('intern_type', 'N/A')}")
+                skills_str = ', '.join(details.get('skills', [])[:8])  # Show more skills
+                if len(details.get('skills', [])) > 8:
+                    skills_str += f'... (+{len(details.get("skills", []))-8} more)'
+                print(f"   Skills: {skills_str}")
+                
+                # Show if there's a website link available
+                if 'Website Link' in recommender.df.columns:
+                    internship_row = recommender.df[recommender.df['Internship Id'] == rec['internship_id']]
+                    if not internship_row.empty and not pd.isna(internship_row['Website Link'].iloc[0]):
+                        print(f"   Apply at: {internship_row['Website Link'].iloc[0]}")
+            print("-" * 60)  # Separator between internships
     else:
         print(f"Error: {result.get('error', 'Unknown error')}")
 
@@ -1760,21 +1598,54 @@ def display_stats(result):
 # Command-line interface
 def run_cli():
     """Run a simple command-line interface"""
+    print("Internship Recommendation System")
+    print("=" * 40)
+    
     recommender = LightweightRecommender()
     api = LightweightAPI(recommender)
-
-    skills_input = input("Enter skills (comma-separated): ").strip()
-    if skills_input:
-        skills = [s.strip() for s in skills_input.split(',')]
-        result = api.recommend({'skills': skills, 'top_n': '5'})
-        if result['status'] == 'success':
-            for i, rec in enumerate(result['recommendations'], 1):
-                print(f"{i}. {rec['role']} at {rec['company']}")
-                print(f"   Score: {rec['similarity_score']:.3f} | Stipend: {rec['stipend_amount'] or 'N/A'}")
-                print(f"   Location: {rec['location']} | Duration: {rec['duration'] or 'N/A'} months\n")
+    
+    while True:
+        print("\nOptions:")
+        print("1. Recommend by skills")
+        print("2. Search internships")
+        print("3. Get internship details")
+        print("4. Show statistics")
+        print("5. Exit")
+        
+        choice = input("\nEnter your choice (1-5): ").strip()
+        
+        if choice == '1':
+            skills_input = input("Enter skills (comma-separated): ").strip()
+            if skills_input:
+                skills = [s.strip() for s in skills_input.split(',')]
+                result = api.recommend({'skills': skills, 'top_n': '5'})
+                display_recommendations(result)
+        
+        elif choice == '2':
+            query = input("Enter search query: ").strip()
+            if query:
+                result = api.search({'query': query, 'top_n': '10'})
+                display_search_results(result)
+        
+        elif choice == '3':
+            try:
+                internship_id = int(input("Enter internship ID: ").strip())
+                result = api.get_details({'id': internship_id})
+                display_details(result)
+            except ValueError:
+                print("Please enter a valid number")
+        
+        elif choice == '4':
+            result = api.get_stats()
+            display_stats(result)
+        
+        elif choice == '5':
+            print("Goodbye!")
+            break
+        
         else:
-            print(f"Error: {result.get('error', 'Unknown error')}")
-
+            print("Invalid choice. Please try again.")
+        
 
 # Flask API Server (minimal version) - Optional
 try:
@@ -1844,10 +1715,20 @@ class RecommendationEvaluator:
     def __init__(self, recommender):
         self.recommender = recommender
         self.df = recommender.df
+        self.verbose = False  # Control verbose output
         
+    def set_verbose(self, verbose):
+        """Set verbose mode for detailed output"""
+        self.verbose = verbose
+        
+    def _log(self, message):
+        """Log message only if verbose mode is enabled"""
+        if self.verbose:
+            print(message)
+            
     def create_test_cases(self, num_cases=10):
         """Create test cases for evaluation"""
-        print(f"Creating {num_cases} test cases...")
+        self._log(f"Creating {num_cases} test cases...")
         
         test_cases = []
         
@@ -1882,11 +1763,12 @@ class RecommendationEvaluator:
     
     def mean_average_precision(self, test_cases, k=5):
         """Calculate Mean Average Precision@k"""
-        print(f"Calculating MAP@{k}...")
+        self._log(f"Calculating MAP@{k}...")
         
         ap_scores = []
         
         for case in test_cases:
+            self._log(f"  - Processing test case {case['test_id']}")
             recommendations = self.recommender.recommend_by_skills(
                 case['input_skills'], top_n=k*2
             )
@@ -1909,11 +1791,12 @@ class RecommendationEvaluator:
     
     def coverage_metric(self, test_cases, k=10):
         """Calculate what percentage of internships get recommended"""
-        print("Calculating coverage metric...")
+        self._log("Calculating coverage metric...")
         
         all_recommended_ids = set()
         
         for case in test_cases:
+            self._log(f"  - Processing test case {case['test_id']}")
             recommendations = self.recommender.recommend_by_skills(
                 case['input_skills'], top_n=k
             )
@@ -1926,12 +1809,13 @@ class RecommendationEvaluator:
     
     def diversity_metric(self, test_cases, k=5):
         """Calculate diversity of recommendations across companies"""
-        print("Calculating diversity metric...")
+        self._log("Calculating diversity metric...")
         
         all_companies = set()
         recommended_companies = set()
         
         for case in test_cases:
+            self._log(f"  - Processing test case {case['test_id']}")
             recommendations = self.recommender.recommend_by_skills(
                 case['input_skills'], top_n=k
             )
@@ -1946,7 +1830,7 @@ class RecommendationEvaluator:
     
     def generate_evaluation_report(self, test_cases, k_values=[3, 5, 10]):
         """Generate comprehensive evaluation report"""
-        print("Generating evaluation report...")
+        self._log("Generating evaluation report...")
         
         report = {
             'timestamp': datetime.now().isoformat(),
@@ -1971,7 +1855,7 @@ class RecommendationEvaluator:
     
     def human_evaluation_template(self, test_cases, num_cases=5):
         """Generate template for human evaluation"""
-        print("Generating human evaluation template...")
+        self._log("Generating human evaluation template...")
         
         evaluation_template = {
             'evaluation_id': f"eval_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
@@ -1980,6 +1864,7 @@ class RecommendationEvaluator:
         }
         
         for i, case in enumerate(test_cases[:num_cases]):
+            self._log(f"  - Processing test case {i+1}")
             recommendations = self.recommender.recommend_by_skills(
                 case['input_skills'], top_n=5
             )
@@ -2013,100 +1898,93 @@ class RecommendationEvaluator:
 # 5.2 Initialize evaluator and run evaluation
 print("5.2 Running evaluation...")
 
-# Load the recommender properly
-try:
-    # Try to load from the saved file first
-    import joblib
-    recommender_data = joblib.load('internship_recommender.pkl')
-    advanced_recommender = recommender_data['recommender']
-    print("✓ Loaded recommender from saved file")
-except:
-    # If that fails, create a new one using the LightweightRecommender
-    print("Creating new recommender for evaluation...")
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.metrics.pairwise import cosine_similarity
-    import ast
-    
-    class EvaluationRecommender:
-        def __init__(self, data_path='processed_internship_data.csv'):
-            print("Loading data for evaluation...")
-            essential_cols = [
-                'Internship Id', 'Role', 'Company Name', 'Skills', 
-                'Stipend Amount', 'Location', 'Duration'
-            ]
-            self.df = pd.read_csv(data_path, usecols=essential_cols)
-            print(f"Loaded {len(self.df)} internships")
-            
-            # Preprocess skills
-            self.df['Skills_Processed'] = self.df['Skills'].apply(self._process_skills)
-            
-            # Create TF-IDF matrix
-            self.tfidf = TfidfVectorizer(
-                max_features=100,
-                stop_words='english',
-                min_df=2,
-                max_df=0.8
-            )
-            
-            skills_text = self.df['Skills_Processed'].fillna('')
-            self.tfidf_matrix = self.tfidf.fit_transform(skills_text)
-            print("TF-IDF matrix created")
-        
-        def _process_skills(self, skills_str):
-            """Convert skills string to processed text"""
-            if pd.isna(skills_str) or skills_str == '[]':
-                return ''
-            
-            try:
-                if isinstance(skills_str, str) and skills_str.startswith('['):
-                    skills_list = ast.literal_eval(skills_str)
-                    if isinstance(skills_list, list):
-                        return ' '.join([str(s).lower().strip() for s in skills_list])
-                return str(skills_str).lower()
-            except:
-                return str(skills_str).lower()
-        
-        def recommend_by_skills(self, skills, top_n=5):
-            """Skill-based recommendation"""
-            if not skills:
-                return []
-            
-            # Process input skills
-            query_text = ' '.join([str(s).lower().strip() for s in skills])
-            query_vector = self.tfidf.transform([query_text])
-            
-            # Calculate similarities
-            similarities = cosine_similarity(query_vector, self.tfidf_matrix).flatten()
-            
-            # Get top recommendations
-            top_indices = similarities.argsort()[-top_n:][::-1]
-            
-            results = []
-            for idx in top_indices:
-                internship = self.df.iloc[idx]
-                results.append({
-                    'internship_id': int(internship['Internship Id']),
-                    'role': str(internship['Role']),
-                    'company': str(internship['Company Name']),
-                    'similarity_score': float(similarities[idx]),
-                    'stipend_amount': float(internship['Stipend Amount']) if not pd.isna(internship['Stipend Amount']) else None,
-                    'location': str(internship['Location']),
-                    'duration': int(internship['Duration']) if not pd.isna(internship['Duration']) else None
-                })
-            
-            return results
-    
-    # Create the recommender
-    advanced_recommender = EvaluationRecommender()
+# Create a simple recommender for evaluation
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import ast
 
-# Initialize evaluator
+class EvaluationRecommender:
+    def __init__(self, data_path='processed_internship_data.csv'):
+        print("Loading data for evaluation...")
+        essential_cols = [
+            'Internship Id', 'Role', 'Company Name', 'Skills', 
+            'Stipend Amount', 'Location', 'Duration'
+        ]
+        self.df = pd.read_csv(data_path, usecols=essential_cols)
+        print(f"Loaded {len(self.df)} internships")
+        
+        # Preprocess skills
+        self.df['Skills_Processed'] = self.df['Skills'].apply(self._process_skills)
+        
+        # Create TF-IDF matrix
+        self.tfidf = TfidfVectorizer(
+            max_features=100,
+            stop_words='english',
+            min_df=2,
+            max_df=0.8
+        )
+        
+        skills_text = self.df['Skills_Processed'].fillna('')
+        self.tfidf_matrix = self.tfidf.fit_transform(skills_text)
+        print("TF-IDF matrix created")
+    
+    def _process_skills(self, skills_str):
+        """Convert skills string to processed text"""
+        if pd.isna(skills_str) or skills_str == '[]':
+            return ''
+        
+        try:
+            if isinstance(skills_str, str) and skills_str.startswith('['):
+                skills_list = ast.literal_eval(skills_str)
+                if isinstance(skills_list, list):
+                    return ' '.join([str(s).lower().strip() for s in skills_list])
+            return str(skills_str).lower()
+        except:
+            return str(skills_str).lower()
+    
+    def recommend_by_skills(self, skills, top_n=5):
+        """Skill-based recommendation"""
+        if not skills:
+            return []
+        
+        # Process input skills
+        query_text = ' '.join([str(s).lower().strip() for s in skills])
+        query_vector = self.tfidf.transform([query_text])
+        
+        # Calculate similarities
+        similarities = cosine_similarity(query_vector, self.tfidf_matrix).flatten()
+        
+        # Get top recommendations
+        top_indices = similarities.argsort()[-top_n:][::-1]
+        
+        results = []
+        for idx in top_indices:
+            internship = self.df.iloc[idx]
+            results.append({
+                'internship_id': int(internship['Internship Id']),
+                'role': str(internship['Role']),
+                'company': str(internship['Company Name']),
+                'similarity_score': float(similarities[idx]),
+                'stipend_amount': float(internship['Stipend Amount']) if not pd.isna(internship['Stipend Amount']) else None,
+                'location': str(internship['Location']),
+                'duration': int(internship['Duration']) if not pd.isna(internship['Duration']) else None
+            })
+        
+        return results
+
+# Create the recommender
+advanced_recommender = EvaluationRecommender()
+
+# Initialize evaluator with verbose mode disabled
 evaluator = RecommendationEvaluator(advanced_recommender)
+evaluator.set_verbose(False)  # Disable verbose output
 
 # Create test cases
 test_cases = evaluator.create_test_cases(num_cases=20)
 print(f"Created {len(test_cases)} test cases")
 
 # Run automated evaluation
+print("Running evaluation metrics...")
 evaluation_report = evaluator.generate_evaluation_report(test_cases, k_values=[3, 5, 8])
 
 print("\n" + "="*50)
@@ -2128,7 +2006,7 @@ human_eval = evaluator.human_evaluation_template(test_cases, num_cases=3)
 try:
     with open('human_evaluation_template.json', 'w', encoding='utf-8') as f:
         json.dump(human_eval, f, indent=2, ensure_ascii=False)
-    print("Saved human_evaluation_template.json")
+    print("✓ Saved human_evaluation_template.json")
 except Exception as e:
     print(f"Error saving human evaluation template: {e}")
 
@@ -2228,7 +2106,7 @@ class ABTestingFramework:
 # Initialize A/B testing framework
 ab_testing = ABTestingFramework(advanced_recommender)
 
-# Create sample A/B test experiment
+# Create sample A/B test experiment - FIXED THE SYNTAX ERROR HERE
 experiment_variants = {
     'baseline': {
         'description': 'Basic skill-based recommendations',
@@ -2248,7 +2126,7 @@ experiment_variants = {
 }
 
 ab_testing.create_experiment('recommendation_style', experiment_variants)
-print("A/B testing framework initialized")
+print("✓ A/B testing framework initialized")
 
 # 5.5 Save evaluation results
 print("\n5.5 Saving evaluation results...")
@@ -2257,7 +2135,7 @@ print("\n5.5 Saving evaluation results...")
 try:
     with open('evaluation_report.json', 'w', encoding='utf-8') as f:
         json.dump(evaluation_report, f, indent=2, ensure_ascii=False)
-    print("Saved evaluation_report.json")
+    print("✓ Saved evaluation_report.json")
 except Exception as e:
     print(f"Error saving evaluation report: {e}")
 
@@ -2271,7 +2149,7 @@ ab_config = {
 try:
     with open('ab_testing_config.json', 'w', encoding='utf-8') as f:
         json.dump(ab_config, f, indent=2, ensure_ascii=False)
-    print("Saved ab_testing_config.json")
+    print("✓ Saved ab_testing_config.json")
 except Exception as e:
     print(f"Error saving A/B test config: {e}")
 

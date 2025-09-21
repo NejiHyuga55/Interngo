@@ -1,23 +1,23 @@
 {
-  "timestamp": "2025-09-21T16:24:09.643946",
-  "total_test_cases": 20,
+  "timestamp": "2025-09-21T17:32:44.613531",
+  "total_test_cases": 0,
   "total_internships": 6642,
   "total_companies": 4757,
   "metrics": {
     "k=3": {
-      "map_score": 0.1833,
-      "coverage": 0.0084,
-      "diversity": 0.0107
+      "map_score": 0.0,
+      "coverage": 0.0,
+      "diversity": 0.0
     },
     "k=5": {
-      "map_score": 0.19,
-      "coverage": 0.0134,
-      "diversity": 0.0172
+      "map_score": 0.0,
+      "coverage": 0.0,
+      "diversity": 0.0
     },
     "k=8": {
-      "map_score": 0.2125,
-      "coverage": 0.0217,
-      "diversity": 0.028
+      "map_score": 0.0,
+      "coverage": 0.0,
+      "diversity": 0.0
     }
   }
 }

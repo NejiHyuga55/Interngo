@@ -1,1 +1,5 @@
-{"evaluation_id": "eval_20250921_162410", "instructions": "Rate each recommendation set from 1-5 (1=Poor, 5=Excellent)", "test_cases": [{"case_id": 1, "input_skills": ["Adobe Photoshop", "AutoCAD", "MS-Excel"], "expected_internship": {"id": 1}}]}
+{
+  "evaluation_id": "eval_20250921_173244",
+  "instructions": "Rate each recommendation set from 1-5 (1=Poor, 5=Excellent)",
+  "test_cases": []
+}
