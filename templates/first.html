@@ -21,6 +21,8 @@
     line-height: 1.6;
   }
   
+ 
+  
   a { 
     text-decoration: none; 
     color: inherit; 
@@ -785,54 +787,6 @@
     font-size: 14px;
     color: #aaa;
   }
-  .user-greeting {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #1a3f8a;
-    background: rgba(244, 121, 32, 0.1);
-    padding: 8px 16px;
-    border-radius: 20px;
-    margin-right: 10px;
-  }
-
-  .logout-btn {
-      background-color: transparent;
-      border: 2px solid #f47920;
-      border-radius: 6px;
-      color: #f47920;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 8px 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-  }
-
-  .logout-btn:hover {
-      background-color: #f47920;
-      color: white;
-  }
-
-  .no-recommendations {
-      text-align: center;
-      padding: 40px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .no-recommendations h3 {
-      color: #1a3f8a;
-      margin-bottom: 15px;
-  }
-
-  .no-recommendations p {
-      color: #666;
-  }
 
   @media (max-width: 1100px) {
     .hero-left h1 {
@@ -890,6 +844,7 @@
       font-size: 30px;
     }
   }
+  
   
   @media (max-width: 768px) {
     .top-bar,
@@ -960,38 +915,6 @@
     section.info-section > p {
       font-size: 16px;
     }
-
-    .user-greeting {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #1a3f8a;
-    background: rgba(244, 121, 32, 0.1);
-    padding: 8px 16px;
-    border-radius: 20px;
-    margin-right: 10px;
-    }
-
-    .logout-btn {
-        background-color: transparent;
-        border: 2px solid #f47920;
-        border-radius: 6px;
-        color: #f47920;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 14px;
-        padding: 8px 16px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s ease;
-    }
-
-    .logout-btn:hover {
-        background-color: #f47920;
-        color: white;
-    }
   }
   
   @media (max-width: 480px) {
@@ -1017,7 +940,230 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
   }
+  .faq-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .faq-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .faq-modal-content {
+            background-color: #fff;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .faq-modal.active .faq-modal-content {
+            transform: translateY(0);
+        }
+        
+        .close-faq-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+        }
+        
+        .close-faq-modal:hover {
+            color: #f47920;
+        }
+        
+        .faq-modal-title {
+            color: #1a3f8a;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f47920;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        .faq-question {
+            font-weight: 700;
+            color: #1a3f8a;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            color: #555;
+            line-height: 1.6;
+            padding: 10px 0;
+        }
+        
+        .faq-toggle {
+            font-size: 18px;
+            color: #f47920;
+        }
+        
+        .contact-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a3f8a;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #f47920;
+            border-radius: 2px;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        
+        .contact-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid #f47920;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .contact-icon {
+            font-size: 42px;
+            color: #f47920;
+            margin-bottom: 20px;
+        }
+        
+        .contact-card h3 {
+            font-size: 22px;
+            margin: 15px 0;
+            color: #1a3f8a;
+        }
+        
+        .contact-info {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .contact-info a {
+            color: #1a3f8a;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: #f47920;
+        }
+        
+        .contact-form {
+            grid-column: 1 / -1;
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a3f8a;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #f47920;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e06c17;
+        }
   </style>
  </head>
  <body>
@@ -1026,22 +1172,18 @@
     <div aria-label="Government of India banner" class="govt-bar" role="contentinfo">
      <div class="left">
       <img alt="Flag of India" src="https://flagcdn.com/w20/in.png"/>
-      <span>
+      <span id="govt-banner-text" data-i18n="govt-banner-text">
        AI BASED PM INTERNSHIP RECOMMENDATION ENGINE
       </span>
      </div>
      <div class="right">
-      <select aria-label="Select language" title="Select language">
-       <option>
-        English
-       </option>
-       <option>
-        Hindi
-       </option>
-       <option>
-        Other
-       </option>
-      </select>
+      <div class="language-select">
+        <i class="fas fa-globe"></i>
+        <select aria-label="Select language" id="language-selector" title="Select language" onchange="changeLanguage(this.value)">
+         <option value="en">English</option>
+         <option value="hi">Hindi</option>
+        </select>
+      </div>
       <i aria-hidden="true" class="fas fa-file-alt">
       </i>
       <span>
@@ -1058,139 +1200,113 @@
      <div class="left-logos">
       <img alt="Ministry of Corporate Affairs Government of India logo" class="govt-logo" height="100" src="{{ url_for('static', filename='images/govt-logo.png') }}" width="80"/>
       <p class="interngo-title">INTERNGO</p>
-      {% if Username %}
-      <div class="user-greeting">
-        <i class="fas fa-user"></i>
-        Hello, {{ Username }}
-      </div>
-      {% endif %}
      </div>
      <div class="right-buttons">
-      {% if not Username %}
-      <a href="{{ url_for('register') }}">
+      <a href="{{url_for('register')}}">
         <button aria-label="register" class="btn-orange">
-          <i aria-hidden="true" class="fas fa-user-circle"></i> Register
+          <i aria-hidden="true" class="fas fa-user-circle"></i> <span data-i18n="btn-register">Register</span>
         </button>
       </a>
-      <a href="{{ url_for('login') }}">
+      <a href="{{url_for('login')}}">
         <button aria-label="Login" class="btn-orange">
-          <i aria-hidden="true" class="fas fa-user-circle"></i> Login
+          <i aria-hidden="true" class="fas fa-user-circle"></i> <span data-i18n="btn-login">Login</span>
         </button>
       </a>
-      {% else %}
-      <button aria-label="Profile" class="btn-orange" style="opacity: 0.7; cursor: default;">
-        <i aria-hidden="true" class="fas fa-user"></i> Profile
-      </button>
-      <a href="{{ url_for('logout') }}">
-        <button class="logout-btn">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
-      </a>
-      {% endif %}
      </div>
     </header>
     
     <nav aria-label="Primary navigation" class="main-nav" role="navigation">
-     <a aria-current="page" href="{{ url_for('home') }}">
+     <a aria-current="page" href="#">
       <i aria-hidden="true" class="fas fa-home">
       </i>
-      HOME
+      <span data-i18n="nav-home">HOME</span>
      </a>
      <a href="#how-it-works-section">
       <i aria-hidden="true" class="fas fa-file-alt"></i>
-      HOW IT WORKS
+      <span data-i18n="nav-how-it-works">HOW IT WORKS</span>
      </a>
      <a href="#" id="eligibility-link">
       <i aria-hidden="true" class="fas fa-thumbs-up"></i>
-      ELIGIBILITY
-     </a>
+      <span data-i18n="nav-eligibility">ELIGIBILITY</span>
+  </a>
     
-     <div aria-expanded="false" aria-haspopup="true" aria-label="Support dropdown" class="dropdown" tabindex="0">
-      <span>
-       <i aria-hidden="true" class="fas fa-headphones">
-       </i>
-       SUPPORT
-       <i aria-hidden="true" class="fas fa-caret-down">
-       </i>
-      </span>
-      <div aria-label="Support submenu" class="dropdown-content" role="menu">
-       <a href="#" role="menuitem">
-        FAQ
-       </a>
-       <a href="#" role="menuitem">
-        Contact
-       </a>
-      </div>
-     </div>
+  <div aria-expanded="false" aria-haspopup="true" aria-label="Support dropdown" class="dropdown" tabindex="0">
+    <span>
+        <i aria-hidden="true" class="fas fa-headphones"></i>
+        <span data-i18n="nav-support">SUPPORT</span>
+        <i aria-hidden="true" class="fas fa-caret-down"></i>
+    </span>
+    <div aria-label="Support submenu" class="dropdown-content" role="menu">
+        <a href="#" id="faq-link" role="menuitem">
+            <span data-i18n="nav-faq">FAQ</span>
+        </a>
+        <a href="#contact-section" role="menuitem">
+            <span data-i18n="nav-contact">Contact</span>
+        </a>
+    </div>
+</div>
     </nav>
-    
     <div class="modal" id="eligibility-modal">
       <div class="modal-content">
           <span class="close-modal" id="close-modal">&times;</span>
-          <h2 class="modal-title">Eligibility Criteria</h2>
-          <p>To participate in the Prime Minister Internship Scheme, applicants must meet the following criteria:</p>
+          <h2 class="modal-title" data-i18n="modal-title">Eligibility Criteria</h2>
+          <p data-i18n="modal-desc">To participate in the Prime Minister Internship Scheme, applicants must meet the following criteria:</p>
           
           <ul class="eligibility-list">
               <li>
                   <i class="fas fa-graduation-cap"></i>
-                  <span>Bachelor's degree from UGC/AICTE -recognized diploma </span>
+                  <span data-i18n="modal-item1">Bachelor's degree from UGC/AICTE -recognized diploma </span>
               </li>
               <li>
                   <i class="fas fa-birthday-cake"></i>
-                  <span>Between 18 to 24 years of age</span>
+                  <span data-i18n="modal-item2">Between 18 to 24 years of age</span>
               </li>
               <li>
                   <i class="fas fa-percentage"></i>
-                  <span>Matriculation + ITI in relevant trade</span>
+                  <span data-i18n="modal-item3">Matriculation + ITI in relevant trade</span>
               </li>
               <li>
                   <i class="fas fa-passport"></i>
-                  <span>intermediate + AICTE -recognized diploma</span>
+                  <span data-i18n="modal-item4">intermediate + AICTE -recognized diploma</span>
               </li>
               <li>
                   <i class="fas fa-file-alt"></i>
-                  <span>No prior criminal record or ongoing legal proceedings</span>
+                  <span data-i18n="modal-item5">No prior criminal record or ongoing legal proceedings</span>
               </li>
           </ul>
           
           <div class="modal-footer">
-              <button class="modal-btn" id="modal-close-btn">Got It</button>
+              <button class="modal-btn" id="modal-close-btn" data-i18n="btn-got-it">Got It</button>
           </div>
       </div>
-    </div>
+  </div>
     
     <div aria-live="polite" class="alert-banner" role="alert">
-     <strong>
+     <strong data-i18n="alert-text">
       Ongoing! Check your dashboard, email, and SMS regularly. Confirm joining via the Internship tile on your dashboard. 
      </strong>
     </div>
     
     <section aria-label="Seed your Bank Account with Aadhaar to Receive Financial Assistance" class="hero">
      <div class="hero-left">
-      <small>
+      <small data-i18n="hero-small">
       🚀 Start Your Journey
       </small>
-      <h1>
+      <h1 data-i18n="hero-title">
       Find Your Perfect Internship
       </h1>
       <div class="highlight-text">
-       <em>
-        with
-        <strong>
-          AI-Powered
-        </strong>
-        <strong>
-          Smart Recommendations
-        </strong>
+       <em data-i18n="hero-highlight">
+        with AI-Powered Smart Recommendations
        </em>
       </div>
-      <p>
+      <p data-i18n="hero-description">
        Discover internships tailored to your skills, interests, and location preferences. No more endless scrolling—get personalized suggestions instantly and take the first step towards your career success with confidence.
       </p>
-      <a href="{{ url_for('input_page') }}">
-          <button aria-label="Get Started">
-              <i aria-hidden="true" class="fas fa-rocket"></i>
-              Get Started
+      <a href="{{url_for('input_page')}}">
+          <button aria-label="Check Status">
+              <i aria-hidden="true" class="fas fa-user-check"></i>
+              <span data-i18n="btn-find-internships">Find Internships</span>
           </button>
       </a>
      </div>
@@ -1205,114 +1321,557 @@
      </div>
     </section>
     
-    <!-- Rest of your HTML content remains the same -->
     <section id="how-it-works-section" class="info-section">
-      <h2>How It Works</h2>
-      <p>Our AI-powered system simplifies the internship process in just 3 steps:</p>
+      <h2 data-i18n="how-it-works-title">How It Works</h2>
+      <p data-i18n="how-it-works-desc">Our AI-powered system simplifies the internship process in just 3 steps:</p>
       <div class="features-grid">
         <div class="feature-card">
           <i class="fas fa-user-edit"></i>
-          <h3>1. Enter Your Details</h3>
-          <p>Provide your skills, interests, and preferences with a simple form.</p>
+          <h3 data-i18n="step1-title">1. Enter Your Details</h3>
+          <p data-i18n="step1-desc">Provide your skills, interests, and preferences with a simple form.</p>
         </div>
         <div class="feature-card">
           <i class="fas fa-brain"></i>
-          <h3>2. AI Smart Match</h3>
-          <p>Our algorithm analyzes and finds internships best suited for you.</p>
+          <h3 data-i18n="step2-title">2. AI Smart Match</h3>
+          <p data-i18n="step2-desc">Our algorithm analyzes and finds internships best suited for you.</p>
         </div>
         <div class="feature-card">
           <i class="fas fa-briefcase"></i>
-          <h3>3. Apply & Start</h3>
-          <p>View recommended opportunities and apply instantly to start your journey.</p>
+          <h3 data-i18n="step3-title">3. Apply & Start</h3>
+          <p data-i18n="step3-desc">View recommended opportunities and apply instantly to start your journey.</p>
         </div>
       </div>
     </section>
     
-    <!-- ... Rest of your HTML remains unchanged ... -->
-    
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-column">
-            <h3>About Us</h3>
-            <ul>
-              <li><a href="{{url_for('about')}}">About PM Internship</a></li>
-              <li><a href="#">Our Mission</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Partners</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#">How to Apply</a></li>
-              <li><a href="#">Eligibility Criteria</a></li>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="#">Contact Us</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Resources</h3>
-            <ul>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Success Stories</a></li>
-              <li><a href="#">Webinars</a></li>
-              <li><a href="#">Download App</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Connect With Us</h3>
-            <ul>
-              <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-              <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-              <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-            </ul>
-          </div>
+    <section class="info-section">
+      <h2 data-i18n="benefits-title">Benefits</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-bolt"></i>
+          <h3 data-i18n="benefit1-title">Fast & Easy</h3>
+          <p data-i18n="benefit1-desc">No more wasting hours searching. Get instant recommendations tailored to you.</p>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2023 Prime Minister Internship Scheme. All Rights Reserved.</p>
+        <div class="feature-card">
+          <i class="fas fa-university"></i>
+          <h3 data-i18n="benefit2-title">Govt. Trusted</h3>
+          <p data-i18n="benefit2-desc">Linked with the PM Internship Scheme ensuring authenticity and reliability.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3 data-i18n="benefit3-title">Location Preference</h3>
+          <p data-i18n="benefit3-desc">Find internships near your city or explore remote opportunities.</p>
         </div>
       </div>
-    </footer>
+    </section>
+    
+    <section class="info-section">
+      <h2 data-i18n="features-title">Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-robot"></i>
+          <h3 data-i18n="feature1-title">AI Recommendations</h3>
+          <p data-i18n="feature1-desc">Smart matching based on your skills & background.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3 data-i18n="feature2-title">Mobile Friendly</h3>
+          <p data-i18n="feature2-desc">Access anytime, anywhere with full responsive design.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-users"></i>
+          <h3 data-i18n="feature3-title">Student-Centric</h3>
+          <p data-i18n="feature3-desc">Built for youth to find the right opportunity with ease.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-lock"></i>
+          <h3 data-i18n="feature4-title">Secure</h3>
+          <p data-i18n="feature4-desc">Your data is safe and only used to give you better results.</p>
+        </div>
+      </div>
+    </section>
+    <section id="contact-section" class="contact-section">
+      <h2 data-i18n="contact-title">Contact Us</h2>
+      <p data-i18n="contact-desc">Have questions or need assistance? We're here to help!</p>
+      
+      <div class="contact-container">
+          <div class="contact-card">
+              <div class="contact-icon">
+                  <i class="fas fa-phone-alt"></i>
+              </div>
+              <h3 data-i18n="contact-phone-title">Phone Support</h3>
+              <div class="contact-info">
+                  <p><span data-i18n="contact-phone1">Helpline: </span><a href="tel:18001208600">1800-120-8600</a></p>
+                  <p data-i18n="contact-phone2">Monday to Saturday, 9 AM to 6 PM</p>
+              </div>
+          </div>
+          
+          <div class="contact-card">
+              <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+              </div>
+              <h3 data-i18n="contact-email-title">Email Support</h3>
+              <div class="contact-info">
+                  <p><span data-i18n="contact-email1">General Inquiries: </span><a href="mailto:support@interngo.gov.in">support@interngo.gov.in</a></p>
+                  <p><span data-i18n="contact-email2">Technical Support: </span><a href="mailto:tech@interngo.gov.in">tech@interngo.gov.in</a></p>
+              </div>
+          </div>
+          
+          <div class="contact-card">
+              <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h3 data-i18n="contact-address-title">Office Address</h3>
+              <div class="contact-info">
+                  <p data-i18n="contact-address1">Ministry of Education, Government of India</p>
+                  <p data-i18n="contact-address2">Shastri Bhawan, New Delhi - 110001</p>
+              </div>
+          </div>
+          
+          <div class="contact-form">
+              <h3 data-i18n="contact-form-title">Send us a Message</h3>
+              <form id="contactForm">
+                  <div class="form-group">
+                      <label for="name" data-i18n="contact-form-name">Full Name</label>
+                      <input type="text" id="name" name="name" required>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="email" data-i18n="contact-form-email">Email Address</label>
+                      <input type="email" id="email" name="email" required>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="subject" data-i18n="contact-form-subject">Subject</label>
+                      <input type="text" id="subject" name="subject" required>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="message" data-i18n="contact-form-message">Message</label>
+                      <textarea id="message" name="message" required></textarea>
+                  </div>
+                  
+                  <button type="submit" class="submit-btn" data-i18n="btn-send-message">Send Message</button>
+              </form>
+          </div>
+      </div>
+  </section>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 data-i18n="footer-about">About Us</h3>
+          <ul>
+            <li><a href="#"><span data-i18n="footer-about1">About PM Internship</span></a></li>
+            <li><a href="#"><span data-i18n="footer-about2">Our Mission</span></a></li>
+            <li><a href="#"><span data-i18n="footer-about3">Team</span></a></li>
+            <li><a href="#"><span data-i18n="footer-about4">Partners</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer-links">Quick Links</h3>
+          <ul>
+            <li><a href="#"><span data-i18n="footer-links1">How to Apply</span></a></li>
+            <li><a href="#"><span data-i18n="footer-links2">Eligibility Criteria</span></a></li>
+            <li><a href="#"><span data-i18n="footer-links3">FAQs</span></a></li>
+            <li><a href="#"><span data-i18n="footer-links4">Contact Us</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer-resources">Resources</h3>
+          <ul>
+            <li><a href="#"><span data-i18n="footer-resources1">Blog</span></a></li>
+            <li><a href="#"><span data-i18n="footer-resources2">Success Stories</span></a></li>
+            <li><a href="#"><span data-i18n="footer-resources3">Webinars</span></a></li>
+            <li><a href="#"><span data-i18n="footer-resources4">Download App</span></a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer-connect">Connect With Us</h3>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="footer-copyright">&copy; 2023 Prime Minister Internship Scheme. All Rights Reserved.</p>
+      </div>
+    </div>
+    <div class="faq-modal" id="faq-modal">
+      <div class="faq-modal-content">
+          <span class="close-faq-modal" id="close-faq-modal">&times;</span>
+          <h2 class="faq-modal-title" data-i18n="faq-title">Frequently Asked Questions</h2>
+          
+          <div class="faq-item">
+              <div class="faq-question">
+                  <span data-i18n="faq1-q">What is the Prime Minister Internship Scheme?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <span data-i18n="faq1-a">The Prime Minister Internship Scheme is a government initiative designed to provide valuable work experience to young graduates and diploma holders across various sectors in India. It aims to bridge the gap between academic learning and practical industry requirements.</span>
+              </div>
+          </div>
+          
+          <div class="faq-item">
+              <div class="faq-question">
+                  <span data-i18n="faq2-q">Who is eligible to apply for the internship?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <span data-i18n="faq2-a">Applicants must be between 18-24 years of age and hold either a Bachelor's degree from a UGC/AICTE-recognized institution, a relevant ITI trade certificate after matriculation, or an AICTE-recognized diploma after intermediate education.</span>
+              </div>
+          </div>
+          
+          <div class="faq-item">
+              <div class="faq-question">
+                  <span data-i18n="faq3-q">How does the AI recommendation system work?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <span data-i18n="faq3-a">Our AI system analyzes your skills, educational background, interests, and location preferences to match you with the most suitable internship opportunities from our partner companies. The algorithm considers multiple factors to provide personalized recommendations.</span>
+              </div>
+          </div>
+          
+          <div class="faq-item">
+              <div class="faq-question">
+                  <span data-i18n="faq4-q">Is there any financial assistance provided?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <span data-i18n="faq4-a">Yes, selected candidates receive a stipend during their internship period. The amount varies based on the role, location, and duration of the internship. Additional financial support may be available for candidates from economically disadvantaged backgrounds.</span>
+              </div>
+          </div>
+          
+          <div class="faq-item">
+              <div class="faq-question">
+                  <span data-i18n="faq5-q">How long does the internship last?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <span data-i18n="faq5-a">Internship durations typically range from 3 to 6 months, depending on the specific role and company requirements. Some specialized positions may have different durations.</span>
+              </div>
+          </div>
+          
+          <div class="faq-item">
+              <div class="faq-question">
+                  <span data-i18n="faq6-q">Can I apply if I'm currently studying?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <span data-i18n="faq6-a">The program is primarily designed for those who have completed their education. However, final year students may be eligible for certain positions. Please check specific eligibility requirements for each internship opportunity.</span>
+              </div>
+          </div>
+          
+          <div class="faq-item">
+              <div class="faq-question">
+                  <span data-i18n="faq7-q">What documents are required for registration?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <span data-i18n="faq7-a">You will need your educational certificates, identity proof (Aadhaar card, passport, or driver's license), address proof, and a recent photograph. Specific internships may require additional documents.</span>
+              </div>
+          </div>
+      </div>
+  </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('eligibility-modal');
-            const eligibilityLink = document.getElementById('eligibility-link');
-            const closeModal = document.getElementById('close-modal');
-            const closeBtn = document.getElementById('modal-close-btn');
-            
-            eligibilityLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; 
-            });
-            
-            closeModal.addEventListener('click', function() {
-                modal.classList.remove('active');
-                document.body.style.overflow = ''; 
-            });
-            
-            closeBtn.addEventListener('click', function() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-            
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = ''; 
-                }
-            });
-            
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = ''; 
-                }
-            });
+    const eligibilityLink = document.getElementById('eligibility-link');
+    const eligibilityModal = document.getElementById('eligibility-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+
+    function openModal(modal) {
+        modal.classList.add('active');
+    }
+
+    function closeModal(modal) {
+        modal.classList.remove('active');
+    }
+
+    if (eligibilityLink && eligibilityModal) {
+        eligibilityLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(eligibilityModal);
         });
-    </script>
-</body>
-</html>
+        closeModalBtn.addEventListener('click', () => {
+            closeModal(eligibilityModal);
+        });
+        modalCloseBtn.addEventListener('click', () => {
+            closeModal(eligibilityModal);
+        });
+        window.addEventListener('click', (event) => {
+            if (event.target === eligibilityModal) {
+                closeModal(eligibilityModal);
+            }
+        });
+    }
+
+    const faqLink = document.getElementById('faq-link');
+    const faqModal = document.getElementById('faq-modal');
+    const closeFaqModalBtn = document.getElementById('close-faq-modal');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    if (faqLink && faqModal) {
+        faqLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(faqModal);
+        });
+        closeFaqModalBtn.addEventListener('click', () => {
+            closeModal(faqModal);
+        });
+        window.addEventListener('click', (event) => {
+            if (event.target === faqModal) {
+                closeModal(faqModal);
+            }
+        });
+    }
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const toggle = item.querySelector('.faq-toggle');
+
+        question.addEventListener('click', () => {
+            const isExpanded = question.getAttribute('aria-expanded') === 'true' || false;
+            question.setAttribute('aria-expanded', !isExpanded);
+            answer.classList.toggle('active');
+            toggle.textContent = isExpanded ? '+' : '−';
+        });
+    });
+
+    const languageSelector = document.getElementById('language-selector');
+    const allTranslatableElements = document.querySelectorAll('[data-i18n]');
+
+    const translations = {
+        en: {
+            "govt-banner-text": "AI BASED PM INTERNSHIP RECOMMENDATION ENGINE",
+            "nav-home": "HOME",
+            "nav-how-it-works": "HOW IT WORKS",
+            "nav-eligibility": "ELIGIBILITY",
+            "nav-support": "SUPPORT",
+            "nav-faq": "FAQ",
+            "nav-contact": "Contact",
+            "btn-register": "Register",
+            "btn-login": "Login",
+            "btn-find-internships": "Find Internships",
+            "btn-got-it": "Got It",
+            "btn-send-message": "Send Message",
+            "alert-text": "Ongoing! Check your dashboard, email, and SMS regularly. Confirm joining via the Internship tile on your dashboard.",
+            "hero-small": "🚀 Start Your Journey",
+            "hero-title": "Find Your Perfect Internship",
+            "hero-highlight": "with AI-Powered Smart Recommendations",
+            "hero-description": "Discover internships tailored to your skills, interests, and location preferences. No more endless scrolling—get personalized suggestions instantly and take the first step towards your career success with confidence.",
+            "how-it-works-title": "How It Works",
+            "how-it-works-desc": "Our AI-powered system simplifies the internship process in just 3 steps:",
+            "step1-title": "1. Enter Your Details",
+            "step1-desc": "Provide your skills, interests, and preferences with a simple form.",
+            "step2-title": "2. AI Smart Match",
+            "step2-desc": "Our algorithm analyzes and finds internships best suited for you.",
+            "step3-title": "3. Apply & Start",
+            "step3-desc": "View recommended opportunities and apply instantly to start your journey.",
+            "benefits-title": "Benefits",
+            "benefit1-title": "Fast & Easy",
+            "benefit1-desc": "No more wasting hours searching. Get instant recommendations tailored to you.",
+            "benefit2-title": "Govt. Trusted",
+            "benefit2-desc": "Linked with the PM Internship Scheme ensuring authenticity and reliability.",
+            "benefit3-title": "Location Preference",
+            "benefit3-desc": "Find internships near your city or explore remote opportunities.",
+            "features-title": "Key Features",
+            "feature1-title": "AI Recommendations",
+            "feature1-desc": "Smart matching based on your skills & background.",
+            "feature2-title": "Mobile Friendly",
+            "feature2-desc": "Access anytime, anywhere with full responsive design.",
+            "feature3-title": "Student-Centric",
+            "feature3-desc": "Built for youth to find the right opportunity with ease.",
+            "feature4-title": "Secure",
+            "feature4-desc": "Your data is safe and only used to give you better results.",
+            "contact-title": "Contact Us",
+            "contact-desc": "Have questions or need assistance? We're here to help!",
+            "contact-phone-title": "Phone Support",
+            "contact-phone1": "Helpline: ",
+            "contact-phone2": "Monday to Saturday, 9 AM to 6 PM",
+            "contact-email-title": "Email Support",
+            "contact-email1": "General Inquiries: ",
+            "contact-email2": "Technical Support: ",
+            "contact-address-title": "Office Address",
+            "contact-address1": "Ministry of Education, Government of India",
+            "contact-address2": "Shastri Bhawan, New Delhi - 110001",
+            "contact-form-title": "Send us a Message",
+            "contact-form-name": "Full Name",
+            "contact-form-email": "Email Address",
+            "contact-form-subject": "Subject",
+            "contact-form-message": "Message",
+            "footer-about": "About Us",
+            "footer-about1": "About PM Internship",
+            "footer-about2": "Our Mission",
+            "footer-about3": "Team",
+            "footer-about4": "Partners",
+            "footer-links": "Quick Links",
+            "footer-links1": "How to Apply",
+            "footer-links2": "Eligibility Criteria",
+            "footer-links3": "FAQs",
+            "footer-links4": "Contact Us",
+            "footer-resources": "Resources",
+            "footer-resources1": "Blog",
+            "footer-resources2": "Success Stories",
+            "footer-resources3": "Webinars",
+            "footer-resources4": "Download App",
+            "footer-connect": "Connect With Us",
+            "footer-copyright": "© 2023 Prime Minister Internship Scheme. All Rights Reserved.",
+            "modal-title": "Eligibility Criteria",
+            "modal-desc": "To participate in the Prime Minister Internship Scheme, applicants must meet the following criteria:",
+            "modal-item1": "Bachelor's degree from UGC/AICTE -recognized diploma",
+            "modal-item2": "Between 18 to 24 years of age",
+            "modal-item3": "Matriculation + ITI in relevant trade",
+            "modal-item4": "intermediate + AICTE -recognized diploma",
+            "modal-item5": "No prior criminal record or ongoing legal proceedings",
+            "faq-title": "Frequently Asked Questions",
+            "faq1-q": "What is the Prime Minister Internship Scheme?",
+            "faq1-a": "The Prime Minister Internship Scheme is a government initiative designed to provide valuable work experience to young graduates and diploma holders across various sectors in India. It aims to bridge the gap between academic learning and practical industry requirements.",
+            "faq2-q": "Who is eligible to apply for the internship?",
+            "faq2-a": "Applicants must be between 18-24 years of age and hold either a Bachelor's degree from a UGC/AICTE-recognized institution, a relevant ITI trade certificate after matriculation, or an AICTE-recognized diploma after intermediate education.",
+            "faq3-q": "How does the AI recommendation system work?",
+            "faq3-a": "Our AI system analyzes your skills, educational background, interests, and location preferences to match you with the most suitable internship opportunities from our partner companies. The algorithm considers multiple factors to provide personalized recommendations.",
+            "faq4-q": "Is there any financial assistance provided?",
+            "faq4-a": "Yes, selected candidates receive a stipend during their internship period. The amount varies based on the role, location, and duration of the internship. Additional financial support may be available for candidates from economically disadvantaged backgrounds.",
+            "faq5-q": "How long does the internship last?",
+            "faq5-a": "Internship durations typically range from 3 to 6 months, depending on the specific role and company requirements. Some specialized positions may have different durations.",
+            "faq6-q": "Can I apply if I'm currently studying?",
+            "faq6-a": "The program is primarily designed for those who have completed their education. However, final year students may be eligible for certain positions. Please check specific eligibility requirements for each internship opportunity.",
+            "faq7-q": "What documents are required for registration?",
+            "faq7-a": "You will need your educational certificates, identity proof (Aadhaar card, passport, or driver's license), address proof, and a recent photograph. Specific internships may require additional documents."
+        },
+        hi: {
+            "govt-banner-text": "एआई आधारित पीएम इंटर्नशिप सिफारिश इंजन",
+            "nav-home": "होम",
+            "nav-how-it-works": "यह कैसे काम करता है",
+            "nav-eligibility": "पात्रता",
+            "nav-support": "सहायता",
+            "nav-faq": "सामान्य प्रश्न",
+            "nav-contact": "संपर्क करें",
+            "btn-register": "पंजीकरण",
+            "btn-login": "लॉगिन",
+            "btn-find-internships": "इंटर्नशिप खोजें",
+            "btn-got-it": "समझ गया",
+            "btn-send-message": "संदेश भेजें",
+            "alert-text": "चल रहा है! अपने डैशबोर्ड, ईमेल और एसएमएस को नियमित रूप से जांचें। अपने डैशबोर्ड पर इंटर्नशिप टाइल के माध्यम से जुड़ने की पुष्टि करें।",
+            "hero-small": "🚀 अपनी यात्रा शुरू करें",
+            "hero-title": "अपनी परफेक्ट इंटर्नशिप ढूंढें",
+            "hero-highlight": "एआई-पावर्ड स्मार्ट सिफारिशों के साथ",
+            "hero-description": "अपने कौशल, रुचियों और स्थान वरीयताओं के अनुरूप इंटर्नशिप खोजें। अंतहीन स्क्रॉलिंग की कोई आवश्यकता नहीं - तुरंत व्यक्तिगत सुझाव प्राप्त करें और आत्मविश्वास के साथ अपने करियर की सफलता की दिशा में पहला कदम उठाएं।",
+            "how-it-works-title": "यह कैसे काम करता है",
+            "how-it-works-desc": "हमारी एआई-संचालित प्रणाली इंटर्नशिप प्रक्रिया को सिर्फ 3 चरणों में सरल बनाती है:",
+            "step1-title": "1. अपना विवरण दर्ज करें",
+            "step1-desc": "एक सरल फॉर्म के साथ अपने कौशल, रुचियों और वरीयताओं को प्रदान करें।",
+            "step2-title": "2. एआई स्मार्ट मिलान",
+            "step2-desc": "हमारा एल्गोरिदम आपके लिए सबसे उपयुक्त इंटर्नशिप का विश्लेषण और पता लगाता है।",
+            "step3-title": "3. आवेदन करें और शुरू करें",
+            "step3-desc": "अनुशंसित अवसरों को देखें और अपनी यात्रा शुरू करने के लिए तुरंत आवेदन करें।",
+            "benefits-title": "लाभ",
+            "benefit1-title": "तेज और आसान",
+            "benefit1-desc": "घंटों खोजने में समय बर्बाद न करें। आपके लिए तैयार की गई त्वरित सिफारिशें प्राप्त करें।",
+            "benefit2-title": "सरकार द्वारा विश्वसनीय",
+            "benefit2-desc": "पीएम इंटर्नशिप योजना से जुड़ा हुआ, प्रामाणिकता और विश्वसनीयता सुनिश्चित करता है।",
+            "benefit3-title": "स्थान वरीयता",
+            "benefit3-desc": "अपने शहर के पास इंटर्नशिप खोजें या रिमोट अवसरों का पता लगाएं।",
+            "features-title": "मुख्य विशेषताएं",
+            "feature1-title": "एआई सिफारिशें",
+            "feature1-desc": "आपके कौशल और पृष्ठभूमि के आधार पर स्मार्ट मिलान।",
+            "feature2-title": "मोबाइल अनुकूल",
+            "feature2-desc": "पूरी उत्तरदायी डिजाइन के साथ कभी भी, कहीं भी एक्सेस करें।",
+            "feature3-title": "छात्र-केंद्रित",
+            "feature3-desc": "युवाओं के लिए आसानी से सही अवसर खोजने के लिए बनाया गया।",
+            "feature4-title": "सुरक्षित",
+            "feature4-desc": "आपका डेटा सुरक्षित है और केवल आपको बेहतर परिणाम देने के लिए उपयोग किया जाता है।",
+            "contact-title": "हमसे संपर्क करें",
+            "contact-desc": "कोई प्रश्न हैं या सहायता चाहिए? हम आपकी मदद के लिए यहां हैं!",
+            "contact-phone-title": "फोन सहायता",
+            "contact-phone1": "हेल्पलाइन: ",
+            "contact-phone2": "सोमवार से शनिवार, सुबह 9 बजे से शाम 6 बजे तक",
+            "contact-email-title": "ईमेल सहायता",
+            "contact-email1": "सामान्य पूछताछ: ",
+            "contact-email2": "तकनीकी सहायता: ",
+            "contact-address-title": "कार्यालय का पता",
+            "contact-address1": "शिक्षा मंत्रालय, भारत सरकार",
+            "contact-address2": "शास्त्री भवन, नई दिल्ली - 110001",
+            "contact-form-title": "हमें एक संदेश भेजें",
+            "contact-form-name": "पूरा नाम",
+            "contact-form-email": "ईमेल पता",
+            "contact-form-subject": "विषय",
+            "contact-form-message": "संदेश",
+            "footer-about": "हमारे बारे में",
+            "footer-about1": "पीएम इंटर्नशिप के बारे में",
+            "footer-about2": "हमारा मिशन",
+            "footer-about3": "टीम",
+            "footer-about4": "साझेदार",
+            "footer-links": "त्वरित लिंक",
+            "footer-links1": "आवेदन कैसे करें",
+            "footer-links2": "पात्रता मानदंड",
+            "footer-links3": "सामान्य प्रश्न",
+            "footer-links4": "संपर्क करें",
+            "footer-resources": "संसाधन",
+            "footer-resources1": "ब्लॉग",
+            "footer-resources2": "सफलता की कहानियां",
+            "footer-resources3": "वेबिनार",
+            "footer-resources4": "ऐप डाउनलोड करें",
+            "footer-connect": "हमसे जुड़ें",
+            "footer-copyright": "© 2023 प्राइम मिनिस्टर इंटर्नशिप स्कीम। सभी अधिकार सुरक्षित।",
+            "modal-title": "पात्रता मापदंड",
+            "modal-desc": "प्रधानमंत्री इंटर्नशिप योजना में भाग लेने के लिए, आवेदकों को निम्नलिखित मापदंडों को पूरा करना होगा:",
+"modal-item1": "यूजीसी/एआईसीटीई-मान्यता प्राप्त डिप्लोमा से स्नातक की डिग्री",
+"modal-item2": "18 से 24 वर्ष की आयु के बीच",
+"modal-item3": "मैट्रिकुलेशन + प्रासंगिक ट्रेड में आईटीआई",
+"modal-item4": "इंटरमीडिएट + एआईसीटीई-मान्यता प्राप्त डिप्लोमा",
+"modal-item5": "कोई पूर्व आपराधिक रिकॉर्ड या चल रही कानूनी कार्यवाही नहीं",
+"faq-title": "अक्सर पूछे जाने वाले प्रश्न",
+"faq1-q": "प्रधानमंत्री इंटर्नशिप योजना क्या है?",
+"faq1-a": "प्रधानमंत्री इंटर्नशिप योजना भारत में युवा स्नातकों और डिप्लोमा धारकों को विभिन्न क्षेत्रों में मूल्यवान कार्य अनुभव प्रदान करने के लिए एक सरकारी पहल है। इसका उद्देश्य शैक्षणिक शिक्षा और व्यावहारिक उद्योग आवश्यकताओं के बीच के अंतर को पाटना है।",
+"faq2-q": "इंटर्नशिप के लिए कौन आवेदन करने योग्य है?",
+"faq2-a": "आवेदकों की आयु 18-24 वर्ष के बीच होनी चाहिए और उनके पास यूजीसी/एआईसीटीई-मान्यता प्राप्त संस्थान से स्नातक की डिग्री, मैट्रिक के बाद संबंधित आईटीआई व्यापार प्रमाणपत्र, या इंटरमीडिएट शिक्षा के बाद एआईसीटीई-मान्यता प्राप्त डिप्लोमा होना चाहिए।",
+"faq3-q": "एआई सिफारिश प्रणाली कैसे काम करती है?",
+"faq3-a": "हमारी एआई प्रणाली आपके कौशल, शैक्षिक पृष्ठभूमि, रुचियों और स्थान वरीयताओं का विश्लेषण करती है ताकि आपको हमारे भागीदार कंपनियों से सबसे उपयुक्त इंटर्नशिप अवसरों से मिलाया जा सके। एल्गोरिदम व्यक्तिगत सिफारिशें प्रदान करने के लिए कई कारकों पर विचार करता है।",
+"faq4-q": "क्या कोई वित्तीय सहायता प्रदान की जाती है?",
+"faq4-a": "हाँ, चयनित उम्मीदवारों को उनकी इंटर्नशिप अवधि के दौरान एक वजीफा मिलता है। राशि भूमिका, स्थान और इंटर्नशिप की अवधि के आधार पर भिन्न होती है। आर्थिक रूप से वंचित पृष्ठभूमि वाले उम्मीदवारों के लिए अतिरिक्त वित्तीय सहायता उपलब्ध हो सकती है।",
+"faq5-q": "इंटर्नशिप कितने समय तक चलती है?",
+"faq5-a": "इंटर्नशिप की अवधि आमतौर पर 3 से 6 महीने तक होती है, जो विशिष्ट भूमिका और कंपनी की आवश्यकताओं पर निर्भर करती है। कुछ विशेष पदों की अवधि अलग हो सकती है।",
+"faq6-q": "क्या मैं अभी पढ़ाई कर रहा हूँ तो आवेदन कर सकता हूँ?",
+"faq6-a": "यह कार्यक्रम मुख्य रूप से उन लोगों के लिए डिज़ाइन किया गया है जिन्होंने अपनी शिक्षा पूरी कर ली है। हालांकि, अंतिम वर्ष के छात्र कुछ पदों के लिए योग्य हो सकते हैं। कृपया प्रत्येक इंटर्नशिप अवसर के लिए विशिष्ट पात्रता आवश्यकताओं की जाँच करें।",
+"faq7-q": "पंजीकरण के लिए कौन से दस्तावेज़ आवश्यक हैं?",
+"faq7-a": "आपको अपने शैक्षिक प्रमाणपत्र, पहचान प्रमाण (आधार कार्ड, पासपोर्ट, या ड्राइविंग लाइसेंस), और एक हालिया तस्वीर की आवश्यकता होगी। कुछ विशिष्ट इंटर्नशिप के लिए अतिरिक्त दस्तावेज़ों की आवश्यकता हो सकती है।"
+        }
+    };
+    
+function changeLanguage(lang) {
+    allTranslatableElements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+    if (lang === 'hi') {
+        document.getElementById('name').placeholder = "पूरा नाम";
+        document.getElementById('email').placeholder = "ईमेल पता";
+        document.getElementById('subject').placeholder = "विषय";
+        document.getElementById('message').placeholder = "संदेश";
+    } else {
+        document.getElementById('name').placeholder = "";
+        document.getElementById('email').placeholder = "";
+        document.getElementById('subject').placeholder = "";
+        document.getElementById('message').placeholder = "";
+    }
+}
+    languageSelector.addEventListener('change', (event) => {
+        changeLanguage(event.target.value);
+    });
+
+    changeLanguage(languageSelector.value);
+});
+  </script>
+
+ 
