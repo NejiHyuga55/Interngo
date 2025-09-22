@@ -206,7 +206,12 @@ def output():
     elif recommender:
         skills = session["user_preferences"].get("skills", [])
         recommendations = recommender.recommend_by_skills(skills, top_n=5)
-    
+
+    # Fix work from home display
+    for rec in recommendations:
+        if "location" in rec and rec["location"].lower() == "work":
+            rec["location"] = "Work From Home"
+
     return render_template("output.html", 
                          recommendations=recommendations,
                          preferences=session["user_preferences"],

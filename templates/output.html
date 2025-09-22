@@ -550,7 +550,7 @@
             {% set loc_list = loc.split() %}
             {% set loc_unique = loc_list | unique %}
             {% set loc_display = (loc_unique | select('string') | reject('equalto','') | list) %}
-            <span style="font-size: 1rem; color: #444;"><i class="fas fa-map-marker-alt"></i> {{ loc_display[0] if loc_display else 'Unknown' }}</span>
+            <span style="font-size: 1rem; color: #444;"><i class="fas fa-map-marker-alt"></i> {{ 'Work From Home' if loc_display and loc_display[0]|lower == 'work' else loc_display[0] if loc_display else 'Unknown' }}</span>
             {% if internship.stipend_amount %}
             <span style="font-size: 1rem; color: #444;"><i class="fas fa-rupee-sign"></i> ₹{{ internship.stipend_amount|int }}</span>
             {% endif %}
@@ -575,7 +575,7 @@
                     <b>Stipend:</b> ₹{{ internship.stipend_amount|int }}<br>
                   {% endif %}
                   {% if internship.location %}
-                    <b>Location:</b> {{ loc_display[0] if loc_display else 'Unknown' }}<br>
+                    <b>Location:</b> {{ 'Work From Home' if loc_display and loc_display[0]|lower == 'work' else loc_display[0] if loc_display else 'Unknown' }}<br>
                   {% endif %}
                   {% if internship.similarity_score %}
                     <b>Match %:</b> {{ (internship.similarity_score * 100)|round(1) }}%<br>
